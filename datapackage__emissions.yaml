@@ -1,0 +1,248 @@
+contributors: "\u017Diga Zaplotnik"
+description: Annual C02 equivalent emissions from 1986 to most recent year available.
+geography: Slovenia
+licenses:
+  name: AGPL 3.0
+  path: http://www.gnu.org/licenses/agpl-3.0.en.html
+  title: GNU Affero General Public License 3.0
+name: emissions
+profile: data-package
+resources:
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical
+    path: data/emissions_historical.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: number
+        - name: transport
+          type: number
+        - name: energy
+          type: number
+        - name: industrial
+          type: number
+        - name: industrial_fuels
+          type: number
+        - name: household_fuels
+          type: number
+        - name: agriculture
+          type: number
+        - name: waste
+          type: number
+        - name: others
+          type: number
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_agriculture
+    path: data/emissions_historical_agriculture.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          title: Year
+          type: year
+        - name: total
+          title: Total emissions from agriculture
+          type: number
+        - name: enteric_fermentation
+          title: Enteric fermentation from cattle, sheep, swine and other livestock
+          type: number
+        - name: manure_management
+          title: Manure management
+          type: number
+        - name: agricultural_soils
+          type: number
+        - name: liming
+          title: Liming
+          type: number
+        - name: urea_application
+          title: Urea application
+          type: number
+          unit: tonnes CO2 equiv.
+        - name: fertilizers
+          title: Other carbon containing fertilizers
+          type: number
+          unit: tonnes CO2 equiv.
+    scheme: file
+    sources:
+      path: ../emission_data/TGP 1986-2019.xlsx
+      title: I have no idea where this data is from
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_aviation
+    path: data/emissions_historical_aviation.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total_by_residence_principle
+          type: number
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_biomass
+    path: data/emissions_historical_biomass.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: number
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_energy
+    path: data/emissions_historical_energy.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: number
+        - name: fuel_combustion__total
+          type: number
+        - name: fuel_combustion__energy_industries
+          type: number
+        - name: fuel_combustion__manufactoring_construction
+          type: number
+        - name: fuel_combustion__transport
+          type: number
+        - name: fuel_combustion__other_sectors
+          type: number
+        - name: fuel_combustion__other
+          type: number
+        - name: fugitive_emissions__total
+          type: number
+        - name: fugitive_emissions__solid_fuels
+          type: number
+        - name: fugitive_emissions__oil_gas_other
+          type: number
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_industrial_processes
+    path: data/emissions_historical_industrial_processes.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: number
+        - name: mineral_industry
+          type: number
+        - name: chemical_industry
+          type: number
+        - name: metal_industry
+          type: number
+        - name: non_energy_products
+          type: number
+        - name: electronic_industry
+          type: string
+        - name: product_uses_as_ods
+          type: string
+        - name: other_product_manufacture
+          type: number
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_international
+    path: data/emissions_historical_international.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: number
+        - name: aviation
+          type: number
+        - name: navigation
+          type: string
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_lulucf
+    path: data/emissions_historical_lulucf.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: number
+        - name: forest_land
+          type: number
+        - name: cropland
+          type: number
+        - name: grassland
+          type: number
+        - name: wetlands
+          type: number
+        - name: settlements
+          type: number
+        - name: other_lands
+          type: number
+        - name: harvested_wood
+          type: number
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_historical_waste
+    path: data/emissions_historical_waste.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: number
+        - name: solid_waste_disposal
+          type: number
+        - name: biotreatment_solid_waste
+          type: string
+        - name: incineration
+          type: number
+        - name: waste_water
+          type: number
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: emissions_projections
+    path: data/emissions_projections.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: bau
+          type: number
+        - name: nepn
+          type: number
+        - name: ec
+          type: number
+        - name: paris20
+          type: number
+        - name: paris15
+          type: number
+    scheme: file
+title: Annual CO2 emissions for Slovenia
+version: 0.1.0
