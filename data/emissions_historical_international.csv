@@ -1,4 +1,4 @@
-year,emissions_CO2_equiv.international.total,emissions_CO2_equiv.international.aviation,emissions_CO2_equiv.international.navigation
+year,total,aviation,navigation
 1986,58.57873311121999,58.57873311121999,"NO,NA"
 1987,59.338517301,59.338517301,"NO,NA"
 1988,54.315150757,54.315150757,"NO,NA"
