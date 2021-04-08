@@ -29,8 +29,8 @@ package.get_resource(<name>).sources = {
 package.get_resource(<name>).name = ""
 
 # add or change individual resource attributes by refering to the resource name and field:
-package.get_resource(<name>).schema.get_field(<fileld.name>).title = ""
-package.get_resource(<name>).schema.get_field(<fileld.name>).description = ""
+package.get_resource(<name>).schema.get_field(<field.name>).title = ""
+package.get_resource(<name>).schema.get_field(<field.name>).description = ""
 
 # change the year field to the correct type:
 package.get_resource(<name>).schema.get_field("year").type = "year"

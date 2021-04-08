@@ -18,21 +18,21 @@ Data files should be in `.csv` format:
 *[... ne vem kolk je tle treba še standardizirat...]*
 
 ### file names
-* names should be descriptive and understandable, avoid unfamiliar abreviations
+* names should be descriptive and understandable, avoid unfamiliar abbreviations
 * if you have several files in your datapackage, they should all have a common and unique prefix
 * do not use spaces or any special characters except underscores "`_`"
 * use a double underscore "`__`" to delineate hierarchical levels e.g. `emissions_historical__agriculture.csv` 
 
 ### variable names
 
-* names should be descriptive and understandable, avoid unfamiliar abreviations
-* naming should be parsimonoius: if a descriptor is in the filename, there is no need to repeat it in the variable names within
+* names should be descriptive and understandable, avoid unfamiliar abbreviations
+* naming should be parsimonious: if a descriptor is in the filename, there is no need to repeat it in the variable names within
 * do not use spaces or any special characters except underscores "`_`"
 * use a double underscore "`__`" to delineate hierarchical levels e.g. `fuel_combustion__transport` 
 
 ## preparing the metadata 
 
-Once the data files are all ready, you'll use the `python` package `fricitonless` to infer the metadata directly from the files, as well as manually the information that cannot be inferred. 
+Once the data files are all ready, you'll use the `python` package `frictionless` to infer the metadata directly from the files, as well as manually the information that cannot be inferred. 
 
 The final `.yaml` file containing the metadata should be stored in the root of the `https://github.com/podnebnik/data` repository.
 
@@ -46,7 +46,7 @@ pip install frictionless
 
 The command `describe` will automatically create the basic metadata file and because we want it in yaml format, use the `--yaml` option. 
 
-From the root of the `https://github.com/podnebnik/data` repository you can describe a signle csv file, by running:
+From the root of the `https://github.com/podnebnik/data` repository you can describe a single csv file, by running:
 
 ```
 frictionless describe data/emissions_historical.csv --yaml > datapackage__emissions_historical.yaml
@@ -57,12 +57,12 @@ or to describe a set of files, you can do:
 frictionless describe data/emissions_*.csv --yaml > datapackage__emissions.yaml
 ```
 
-Open the `.yaml` file and inspect it for further reference. You will now ammend it to add:
+Open the `.yaml` file and inspect it for further reference. You will now amend it to add:
 
 1. package level metadata - that applies to all the resources e.g. name, title, description, contributors, version, sources..
 2. resource level metadata - that applies to individual `.csv` files e.g. title, description, sources; and to individual fields e.g. title, description, type, format.
 
-Instead of manually editing the `.yaml` file direclty, it is safer to use the prepared template> `datapackage__template.py` file. Make a copy of the template to edit. First replace the placeholder with the path to the `.yaml` file you have just created e.g.
+Instead of manually editing the `.yaml` file directly, it is safer to use the prepared template> `datapackage__template.py` file. Make a copy of the template to edit. First replace the placeholder with the path to the `.yaml` file you have just created e.g.
 
 ```
 # use already prepared metadata
@@ -95,7 +95,7 @@ package.source = {
 ```
 ### adding file level metadata
 
-If each file has a different source, you need to add it at file (i.e. resource) level by refering to the resource name as defined in the `.yaml` file. If the source file is in the repository you can use a relative path, otherwise a url would be great. 
+If each file has a different source, you need to add it at file (i.e. resource) level by referring to the resource name as defined in the `.yaml` file. If the source file is in the repository you can use a relative path, otherwise a url would be great. 
 
 ```
 package.get_resource(<name>).sources = {
@@ -121,7 +121,7 @@ File level metadata checklist:
 1. If you do not have a `sources` attribute at the package level, you *must* have them at file level, one for each file.
 1. You *must* add a `title` attribute to each field in each resource. 
 1. You can also add a `description` attribute. 
-1. You *must* check the data `type` was inferred correctly for each field and ammend it if not. NB: `year` and `date` are valid data types, you should make sure you use them where appropriate. 
+1. You *must* check the data `type` was inferred correctly for each field and amend it if not. NB: `year` and `date` are valid data types, you should make sure you use them where appropriate. 
 1. You can also add a `format` field. See [here](https://specs.frictionlessdata.io/table-schema/#types-and-formats) for valid types and formats. 
 1. You can also add constraints for the fields, as well as missing value definitions and primary and foreign keys if necessary. See [this](https://specs.frictionlessdata.io/table-schema/#constraints) for more options. 
 
