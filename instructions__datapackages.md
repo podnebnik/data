@@ -2,39 +2,63 @@
 
 A datapackage is a combination of data resources (`.csv` data files) and a datapackage descriptor file (`.yaml`) containing the metadata. 
 
+Create a fork of the `https://github.com/podnebnik/data` repository and follow the instructions below to create your datapackage. (NB: have a look at existing datapackages already in the repo, for reference.)
+
 ## preparing the data resources
 
-### file location
+Use the following template for your datapackage folder structure that you should place in the root of the `https://github.com/podnebnik/data` repository:
+```
+data/
+    - emissions/
+        - data/
+            - source/
+                emissions.xlsx
+                pipeline.py
+            emissions.csv
+            emissions.energy.csv
+            emissions.aviation.csv
+            emissions.agriculture.csv
+        datapackage.yaml
+```
 
-Data files should be saved in the `https://github.com/podnebnik/data` repository in the `data/` folder.
+1. give your datapackage a unique and descriptive name (e.g. "emissions") and name the folder in root.
+2. within the folder create a `data/sources/` subfolder for the original data files (if they exist) and any for code used to transform the data into `.csv` files.
+3. place the `.csv` files into the `data/` subfolder (see below for more details on these files)
+4. prepare the metadata `.yaml` file for your datapackage (see below for detailed instructions on how to do that). 
 
-### file types
+### preparing the data files (`.csv` format)
 
 Data files should be in `.csv` format:
 * single row header
 * comma separated fields 
 * one row per record of equal length
 
-*[... ne vem kolk je tle treba še standardizirat...]*
+The file names should be:
+* descriptive and understandable, avoid unfamiliar abbreviations
+* if you have several files in your datapackage, they should all have a common and unique prefix - usually the same one as the name of your datapackage (see the example above).
 
-### file names
-* names should be descriptive and understandable, avoid unfamiliar abbreviations
-* if you have several files in your datapackage, they should all have a common and unique prefix
-* do not use spaces or any special characters except underscores "`_`"
-* use a double underscore "`__`" to delineate hierarchical levels e.g. `emissions_historical__agriculture.csv` 
+The variable names should be:
 
-### variable names
-
-* names should be descriptive and understandable, avoid unfamiliar abbreviations
-* naming should be parsimonious: if a descriptor is in the filename, there is no need to repeat it in the variable names within
+* descriptive and understandable, avoid unfamiliar abbreviations
+* avoid redundancy: if a descriptor is in the filename, there is no need to repeat it in the variable names 
 * do not use spaces or any special characters except underscores "`_`"
 * use a double underscore "`__`" to delineate hierarchical levels e.g. `fuel_combustion__transport` 
 
+*e.g. if the file name is `emissions.agriculture.csv` the following applies for variable names:*
+
+* `emissions.agriculture.manure.management` - not OK
+* `emissions_agriculture__manure_management` - not OK
+* `manure.management` - not OK
+* `manure_management` - OK 
+
 ## preparing the metadata 
 
-Once the data files are all ready, you'll use the `python` package `frictionless` to infer the metadata directly from the files, as well as manually the information that cannot be inferred. 
+Once the data files are all ready, you will 
 
-The final `.yaml` file containing the metadata should be stored in the root of the `https://github.com/podnebnik/data` repository.
+1. use the `python` package `frictionless` to infer the basic metadata directly from the files into a `.yaml` file
+2. manually add the information that cannot be inferred into the `.yaml` file just created.
+
+The final `.yaml` file containing the metadata should be stored at the same level as the `data/` subfolder in your datapackage. 
 
 ### automatic description of the datapackage
 
@@ -44,95 +68,58 @@ Make sure you have python installed on your system, then install the `frictionle
 pip install frictionless
 ```
 
-The command `describe` will automatically create the basic metadata file and because we want it in yaml format, use the `--yaml` option. 
+The `frictionless` command `describe` will automatically create the basic metadata file.
 
-From the root of the `https://github.com/podnebnik/data` repository you can describe a single csv file, by running:
-
-```
-frictionless describe data/emissions_historical.csv --yaml > datapackage__emissions_historical.yaml
-```
-or to describe a set of files, you can do:
+From your datapackage folder you can describe a set of `.csv` files with the help of the `*` wildcard operator like in the following example.  
 
 ```
-frictionless describe data/emissions_*.csv --yaml > datapackage__emissions.yaml
+frictionless describe data/emissions*.csv --yaml > datapackage.yaml
+```
+This creates a `datapackage.yaml` file inferring the metadata for all files that follow the `emissions*.csv` pattern in the `data\` folder. 
+### manually amend the datapackage metadata 
+
+Open the `datapackage.yaml` file and amend it to add 
+
+* *package-level metadata* i.e. information that applies to all the `.csv` files in your datapackage
+* *resounce-level metadata* i.e. information that applies to individual `.csv` files (which are called *resources*). 
+
+Pay attention to indentation! A newly created `datapackage.yaml` file will only have two fields at the top level: `profile` and `resources`. You should attempt the following fields (*but if any of this metadata does not apply equally to all of the files in your datapackage, you should instead add them to the individual resources instead!*):
+
+* `contributors`: enter your name
+* `name`: for your short datapackage name, this should be the same as the folder name (e.g. emissions)
+* `title`: should be a longer name of your datapackage (e.g. Historical and projected CO2 equiv. emissions)
+* `description`: enter a longer description of your datapackage
+* `geography`: enter the geographic area the data refer to (e.g. Europe)
+* `schedule`: enter the time resolution for the data e.g. annual, monthly.. 
+* `sources`: should follow this template:
+```
+sources:
+  path:         # path to file in repo if exists
+  url:          # url to original data source if possible 
+  title:        # name of data source
+  author:       # organisation or person who is the owner of the data
+  code:         # path to code in repo used to transform data into csv files if exists
+  date_accessed:# date when data was extracted in ISO format
+```
+* `licenses:` unless required otherwise by your data source, enter the following: 
+```
+licenses:
+  name: AGPL 3.0
+  path: http://www.gnu.org/licenses/agpl-3.0.en.html
+  title: GNU Affero General Public License 3.0
 ```
 
-Open the `.yaml` file and inspect it for further reference. You will now amend it to add:
+For each individual file (i.e. resource) check the existing metadata and add or change the following (if appropriate):
 
-1. package level metadata - that applies to all the resources e.g. name, title, description, contributors, version, sources..
-2. resource level metadata - that applies to individual `.csv` files e.g. title, description, sources; and to individual fields e.g. title, description, type, format.
-
-Instead of manually editing the `.yaml` file directly, it is safer to use the prepared template> `datapackage__template.py` file. Make a copy of the template to edit. First replace the placeholder with the path to the `.yaml` file you have just created e.g.
-
-```
-# use already prepared metadata
-package = Package("datapackage__emissions.yaml")
-```
-### adding package level metadata
-
-Enter the values for the following attributes describing the whole datapackage. 
-
-The package name should match the unique prefix of the data files contained within. 
-
-```
-package.name = ""
-package.title = ""
-package.description = ""
-package.contributors = ""
-package.version = "0.1.0"
-package.licenses = {"name": "AGPL 3.0", 
-    "path": "http://www.gnu.org/licenses/agpl-3.0.en.html", 
-    "title": "GNU Affero General Public License 3.0"}
-```
-
-If all the files in your package come from the same source, you need to add it at the package level. The `path` attribute can be a path or url. 
-
-```
-package.source = {
-    "title": "",
-    "path": ""
-}
-```
-### adding file level metadata
-
-If each file has a different source, you need to add it at file (i.e. resource) level by referring to the resource name as defined in the `.yaml` file. If the source file is in the repository you can use a relative path, otherwise a url would be great. 
-
-```
-package.get_resource(<name>).sources = {
-    "title": "",
-    "path": ""
-}
-```
-
-Then add the attributes for each field in the resource, using the resource and field names:
-
-```
-package.get_resource(<name>).schema.get_field(<field.name>).title = ""
-package.get_resource(<name>).schema.get_field(<field.name>).description = ""
-```
-If you want to change the name of a resource, you can do that like so:
-```
-package.get_resource(<name>).name = "New better name"
-```
-And then you must of course use the new name of the resource if you wish to make any more changes to it. 
+*[WiP]*
 
 File level metadata checklist:
 
 1. If you do not have a `sources` attribute at the package level, you *must* have them at file level, one for each file.
-1. You *must* add a `title` attribute to each field in each resource. 
-1. You can also add a `description` attribute. 
 1. You *must* check the data `type` was inferred correctly for each field and amend it if not. NB: `year` and `date` are valid data types, you should make sure you use them where appropriate. 
 1. You can also add a `format` field. See [here](https://specs.frictionlessdata.io/table-schema/#types-and-formats) for valid types and formats. 
 1. You can also add constraints for the fields, as well as missing value definitions and primary and foreign keys if necessary. See [this](https://specs.frictionlessdata.io/table-schema/#constraints) for more options. 
 
-### save your metadata
+## finished?
 
-When you are finished editing the metadata, the `.yaml` file is exported with the final line in the template. Name the `.yaml` file using the prefix `datapackage__` and the package name (which should be the same as the prefix of all the files within it) e.g. `datapackage__emissions.yaml`:
-
-```
-# save package metadata
-package.to_yaml(<.yaml>)
-```
-Run the file and you're done! 
-
-NB: save the python script you've just written (using the same naming convention as for the `.yaml` file), since you will need it again if you ever want to update your datapackage. 
+Once you're happy with the files, the folder structure and the `datapackage.yaml` metadata file, create a (draft) pull request tagging @joahim and @majazaloznik as reviewers.
