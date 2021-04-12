@@ -1,7 +1,9 @@
 profile: data-package
 name: emissions
+title: Historical and projected CO2 equiv. emissions
 contributors: Ziga Zaplotnik
-description: Annual C02 equivalent emissions from 1986 to most recent year available.
+description: Annual C02 equivalent emissions from 1986 to most recent year available as well as projections until...
+keywords: [emissions, historical, projections]
 geography: Slovenia
 schedule: annual
 licenses:
@@ -26,25 +28,33 @@ resources:
       fields:
         - name: year
           type: year
+          title: Year
         - name: total
           type: number
+          title: Total emissions from agriculture
           unit: tonnes CO2 equiv.
         - name: enteric_fermentation
+          title: Enteric_fermentation
           type: number
           unit: tonnes CO2 equiv.
         - name: manure_management
+          title: Manure management
           type: number
           unit: tonnes CO2 equiv.
         - name: agricultural_soils
+          title: Agricultural soils
           type: number
           unit: tonnes CO2 equiv.
         - name: liming
+          title: Liming
           type: number
           unit: tonnes CO2 equiv.
         - name: urea_application
+          title: Urea application
           type: number
           unit: tonnes CO2 equiv.
         - name: fertilizers
+          title: Other fertilizers
           type: number
           unit: tonnes CO2 equiv.
     scheme: file

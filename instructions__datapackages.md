@@ -89,6 +89,7 @@ Pay attention to indentation! A newly created `datapackage.yaml` file will only 
 * `name`: for your short datapackage name, this should be the same as the folder name (e.g. emissions)
 * `title`: should be a longer name of your datapackage (e.g. Historical and projected CO2 equiv. emissions)
 * `description`: enter a longer description of your datapackage
+* `keywords`: enter relevant keywords in english as an array enclosed in square brackets (e.g. [emissions, agriculure])
 * `geography`: enter the geographic area the data refer to (e.g. Europe)
 * `schedule`: enter the time resolution for the data e.g. annual, monthly.. 
 * `sources`: should follow this template:
@@ -111,15 +112,33 @@ licenses:
 
 For each individual file (i.e. resource) check the existing metadata and add or change the following (if appropriate):
 
-*[WiP]*
+* `name`: for your short datapackage name, this should be the same as the folder name (e.g. emissions)
+* `title`: should be a longer name of your datapackage (e.g. Historical and projected CO2 equiv. emissions)
 
-File level metadata checklist:
+If there is not a common data source for the whole package and individual files have their separate `sources` you must add them here instead:
+```
+sources:
+  path:         # path to file in repo if exists
+  url:          # url to original data source if possible 
+  title:        # name of data source
+  author:       # organisation or person who is the owner of the data
+  code:         # path to code in repo used to transform data into csv files if exists
+  date_accessed:# date when data was extracted in ISO format
+```
+Finally, the fields in each resource: they already have the `resource.schema.fields.name` and `resource.schema.fields.type` values inferred. 
 
-1. If you do not have a `sources` attribute at the package level, you *must* have them at file level, one for each file.
-1. You *must* check the data `type` was inferred correctly for each field and amend it if not. NB: `year` and `date` are valid data types, you should make sure you use them where appropriate. 
-1. You can also add a `format` field. See [here](https://specs.frictionlessdata.io/table-schema/#types-and-formats) for valid types and formats. 
-1. You can also add constraints for the fields, as well as missing value definitions and primary and foreign keys if necessary. See [this](https://specs.frictionlessdata.io/table-schema/#constraints) for more options. 
+* `name`: do not change this value, it should be identical to the one in the `.csv` file.
+* `type`: you should check the types are correct and change them if required. Usually this will only mean changing the values to `date` or `year` if appropriate. 
+* `title`: add a descriptive title e.g. `luluc` -> `Land use and land use change`
+* `unit`: if appropriate, add the unit of the variable 
+* you can also add a `format` field. See [here](https://specs.frictionlessdata.io/table-schema/#types-and-formats) for valid types and formats. 
+* You can also add constraints for the fields, as well as missing value definitions and primary and foreign keys if necessary. See [this](https://specs.frictionlessdata.io/table-schema/#constraints) for more options. 
 
+### translate the metadata 
+
+Once you're finished editing the `datapackage.yaml` file, make a copy of the file and name it `datapakcage.si.yaml` Keeping the keys in the original English, translate the values into Slovenian for the following fields: `name`, `title`, `description`, `keywords`, `resources.name`, `resources.title`, `resources.sources.title`, `resources.sources.title`, `resources.schema.fields.title` and `resource.schema.fields.unit` as appropriate. 
+
+*Do not translate any of the values for the `name` keys!*
 ## finished?
 
 Once you're happy with the files, the folder structure and the `datapackage.yaml` metadata file, create a (draft) pull request tagging @joahim and @majazaloznik as reviewers.
