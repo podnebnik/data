@@ -6,7 +6,7 @@ Currently we provide the following data packages:
 
 - [Emissions](./emissions/)
 
-For deatils about the provided data, please consult the `datapackage.yaml` files in the individual data package folders.
+For details about the provided data, please consult the `datapackage.yaml` files in the individual data package folders.
 
 
 ## How to create your new data package
@@ -84,7 +84,7 @@ Make sure you have python installed on your system, then install the `frictionle
 
     pip install frictionless
 
-Alternativelly, also provide the `Pipfile` to install the `frictionless` package, that will install the required modules in a new virtual environment (see https://pipenv.pypa.io/ for details):
+Alternatively, we also provide a `Pipfile` to install the `frictionless` package, which will install the required modules in a new virtual environment (see https://pipenv.pypa.io/ for details):
 
     pipenv install    # create the python virtual environment and install the necessary modules
     pipenv shell      # activate the newly created python virtual environment
