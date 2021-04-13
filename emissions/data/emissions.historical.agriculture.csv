@@ -1,4 +1,4 @@
-year,emissions_CO2_equiv.agriculture.total,emissions_CO2_equiv.agriculture.enteric_fermentation,emissions_CO2_equiv.agriculture.manure_management,emissions_CO2_equiv.agriculture.agricultural_soils,emissions_CO2_equiv.agriculture.liming,emissions_CO2_equiv.agriculture.urea_application,emissions_CO2_equiv.agriculture.fertilizers
+year,total,enteric_fermentation,manure_management,agricultural_soils,liming,urea_application,fertilizers
 1986,1930.5790893031601,980.784883335844,422.96179586074834,469.82232906590707,44,9.08689545739129,3.92318558326934
 1987,1942.0777917505939,961.947533588966,427.3156426410179,493.71961316600243,44,10.58629887811593,4.5087034764915
 1988,1905.142335532928,956.5758581727728,419.72784383167584,470.9488162915048,44,9.78028638144927,4.10953085552533

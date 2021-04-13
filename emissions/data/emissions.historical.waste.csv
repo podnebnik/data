@@ -1,4 +1,4 @@
-year,emissions_CO2_equiv.waste.total,emissions_CO2_equiv.waste.solid_waste_disposal,emissions_CO2_equiv.waste.biotreatment_solid_waste,emissions_CO2_equiv.waste.incineration,emissions_CO2_equiv.waste.waste_water
+year,total,solid_waste_disposal,biotreatment_solid_waste,incineration,waste_water
 1986,633.2415782099434,292.3734131886878,NO,2.00300081202,338.8651642092357
 1987,654.6029456659713,314.00353538586074,NO,2.00300081202,338.59640946809054
 1988,674.3449325901978,335.41890637372023,NO,2.00300081202,336.9230254044576
