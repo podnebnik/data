@@ -1,29 +1,30 @@
 profile: data-package
 name: emissions
 title: Historical and projected CO2 equiv. emissions
-contributors: Ziga Zaplotnik
+contributors: Žiga Zaplotnik
 description: Annual C02 equivalent emissions from 1986 to most recent year available as well as projections until...
 keywords: [emissions, historical, projections]
 geography: Slovenia
 schedule: annual
 licenses:
-  name: AGPL 3.0
-  path: http://www.gnu.org/licenses/agpl-3.0.en.html
-  title: GNU Affero General Public License 3.0
+  - name: ODbL-1.0
+    title: Open Data Commons Open Database License 1.0
+    path: http://www.opendefinition.org/licenses/odc-odbl
 resources:
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from agriculture
-    path: data/emissions.historical.agriculture.csv
+  - name: Historical emissions from agriculture
     profile: tabular-data-resource
+    path: data/emissions.historical.agriculture.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          # path to file in repo if exists
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path:          # path to file in repo if exists
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
@@ -32,342 +33,341 @@ resources:
         - name: total
           type: number
           title: Total emissions from agriculture
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: enteric_fermentation
-          title: Enteric_fermentation
+          title: Enteric fermentation
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: manure_management
           title: Manure management
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: agricultural_soils
           title: Agricultural soils
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: liming
           title: Liming
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: urea_application
           title: Urea application
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fertilizers
           title: Other fertilizers
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from aviation
-    path: data/emissions.historical.aviation.csv
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions from aviation
     profile: tabular-data-resource
+    path: data/emissions.historical.aviation.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          sources/aviation.xlsx
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        OECD
-      code:          sources/xls_to_csv.py
-      date_accessed: 2020-03-08
+      - path: sources/aviation.xlsx
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author: OECD
+        code: sources/xls_to_csv.py
+        date_accessed: 2020-03-08
     schema:
       fields:
         - name: year
           type: integer
         - name: total_by_residence_principle
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from biomass
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions from biomass
+    profile: tabular-data-resource
     path: data/emissions.historical.biomass.csv
-    profile: tabular-data-resource
-    sources:
-      path:          # path to file in repo if exists
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted    
-    schema:
-      fields:
-        - name: year
-          type: year
-        - name: total
-          type: number
-          unit: tonnes CO2 equiv.
     scheme: file
-  - encoding: utf-8
     format: csv
+    encoding: utf-8
     hashing: md5
-    name: Historical emissions
-    path: data/emissions.historical.csv
-    profile: tabular-data-resource
     sources:
-      path:          # path to file in repo if exists
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path:          # path to file in repo if exists
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equiv.          
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions
+    profile: tabular-data-resource
+    path: data/emissions.historical.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - path:          # path to file in repo if exists
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total
+          type: number
+          unit: tonnes CO2 equivalent
         - name: transport
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: energy
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: industrial
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: industrial_fuels
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: household_fuels
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: agriculture
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: waste
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: others
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from energy
-    path: data/emissions.historical.energy.csv
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions from energy
     profile: tabular-data-resource
+    path: data/emissions.historical.energy.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          # path to file in repo if exists
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path:          # path to file in repo if exists
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
           type: year
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: total
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fuel_combustion__total
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fuel_combustion__energy_industries
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fuel_combustion__manufacturing_construction
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fuel_combustion__transport
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fuel_combustion__other_sectors
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fuel_combustion__other
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fugitive_emissions__total
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fugitive_emissions__solid_fuels
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: fugitive_emissions__oil_gas_other
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from industrial processes
-    path: data/emissions.historical.industrial.processes.csv
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions from industrial processes
     profile: tabular-data-resource
+    path: data/emissions.historical.industrial.processes.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          # path to file in repo if exists
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path:          # path to file in repo if exists
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: mineral_industry
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: chemical_industry
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: metal_industry
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: non_energy_products
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: electronic_industry
           type: string
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: product_uses_as_ods
           type: string
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: other_product_manufacture
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from international travel # a je to res?
-    path: data/emissions.historical.international.csv
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions from international travel # a je to res?
     profile: tabular-data-resource
+    path: data/emissions.historical.international.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          # path to file in repo if exists
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path:          # path to file in repo if exists
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: aviation
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: navigation
           type: string
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from land use and land use change
-    path: data/emissions.historical.lulucf.csv
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions from land use and land use change
     profile: tabular-data-resource
+    path: data/emissions.historical.lulucf.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          # path to file in repo if exists
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path:          # path to file in repo if exists
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: forest_land
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: cropland
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: grassland
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: wetlands
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: settlements
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: other_lands
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: harvested_wood
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Historical emissions from waste
-    path: data/emissions.historical.waste.csv
+          unit: tonnes CO2 equivalent
+  - name: Historical emissions from waste
     profile: tabular-data-resource
+    path: data/emissions.historical.waste.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          emissions/sources/TGP 1986-2019.xlsx
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path: emissions/sources/TGP 1986-2019.xlsx
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: solid_waste_disposal
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: biotreatment_solid_waste
           type: string # this shouldn't be a string obvs, need to define missing values!
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: incineration
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: waste_water
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
-  - encoding: utf-8
-    format: csv
-    hashing: md5
-    name: Projections of emissions
-    path: data/emissions.projections.csv
+          unit: tonnes CO2 equivalent
+  - name: Projections of emissions
     profile: tabular-data-resource
+    path: data/emissions.projections.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
     sources:
-      path:          emissions/sources/ProjekcijeGHG_Slovenija.xlsx
-      url:           # url to original data source if possible 
-      title:         # name of data source
-      author:        # organization or person who is the owner of the data
-      code:          sources/xls_to_csv.py
-      date_accessed: # date when data was extracted
+      - path: emissions/sources/ProjekcijeGHG_Slovenija.xlsx
+        url:           # url to original data source if possible
+        title:         # name of data source
+        author:        # organization or person who is the owner of the data
+        code: sources/xls_to_csv.py
+        date_accessed: # date when data was extracted
     schema:
       fields:
         - name: year
           type: year
         - name: bau
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: nepn
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: ec
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: paris20
           type: number
-          unit: tonnes CO2 equiv.
+          unit: tonnes CO2 equivalent
         - name: paris15
           type: number
-          unit: tonnes CO2 equiv.
-    scheme: file
+          unit: tonnes CO2 equivalent
