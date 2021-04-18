@@ -1,0 +1,133 @@
+profile: data-package
+name: electricity
+title: Historical and projected Slovenian Electricity Data
+contributors:
+  - Jan Bohinec
+description: Annual Electricity data, installed capacities per fuel type, individual power plants and electricity CO2 emissions, 1990-2040
+keywords: [emissions, electricity, installed, greenenergy, energetika]
+geography: Slovenia
+schedule: annual
+licenses:
+  - name: ODbL-1.0
+    title: Open Data Commons Open Database License 1.0
+    path: http://www.opendefinition.org/licenses/odc-odbl
+resources:
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: electricity.additions_retirements
+    path: data\electricity.additions_retirements.csv
+    profile: tabular-data-resource
+    title: Historical and projected new additions and retirements of electricity production units
+    sources:
+      - title: TODO
+        code: sources/electricity_source_to_csv.py
+        # path:          # path to file in repo if exists
+        # url:           # url to original data source if possible
+        # author:        # organization or person who is the owner of the data
+        # date_accessed: # date when data was extracted
+    schema:
+      fields:
+        - name: year
+          type: integer
+          title: Year
+        - name: additions_wind
+          type: any
+          title: Wind
+        - name: additions_solar
+          type: any
+          title: Solar
+        - name: additions_hydro
+          type: any
+          title: Hydro
+        - name: additions_pump_hydro
+          type: any
+          title: Pump Hydro
+        - name: additions_nuclear
+          type: any
+          title: Nuclear
+        - name: additions_thermal
+          type: any
+          title: Lignite
+        - name: retirements_thermal
+          type: any
+          title: Lignite Retirements
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: electricity.emissions
+    path: data\electricity.emissions.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: any
+        - name: energetika_ljubljana
+          type: any
+        - name: energetika_maribor
+          type: any
+        - name: teb
+          type: any
+        - name: test
+          type: any
+        - name: tetol
+          type: any
+        - name: tet
+          type: any
+        - name: energetika_celje
+          type: any
+        - name: enos
+          type: any
+        - name: m_energetika
+          type: any
+        - name: petrol_energetika
+          type: any
+        - name: other
+          type: any
+        - name: total-individual
+          type: any
+        - name: residual
+          type: any
+        - name: target_2030
+          type: any
+    scheme: file
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: electricity.installed_capacities
+    path: data\electricity.installed_capacities.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: year
+          type: integer
+        - name: total
+          type: any
+        - name: thermal
+          type: any
+        - name: hydro
+          type: any
+        - name: mixed_hydro
+          type: any
+        - name: pump_hydro
+          type: any
+        - name: geothermal
+          type: any
+        - name: wind
+          type: any
+        - name: solar_thermal
+          type: any
+        - name: solar
+          type: any
+        - name: wave
+          type: any
+        - name: nuclear
+          type: any
+        - name: other
+          type: any
+        - name: consumption
+          type: any
+    scheme: file
