@@ -1,10 +1,10 @@
 profile: data-package
 name: electricity
-title: Historical and projected Slovenian Electricity Data
+title: Zgodovinski in predvideni podatki o slovenski energetiki
 contributors:
   - Jan Bohinec
-description: Annual Electricity data, installed capacities per fuel type, individual power plants and electricity CO2 emissions, 1990-2040
-keywords: [emissions, electricity, installed, greenenergy, energetika]
+description: Letni podatki o instaliranih kapacitetah po gorivih, popis posameznih proizvodnjih enot nad 10 MW moči in izpusti CO2 emisij po virih proizvodnje elektrike ter toplote 1990-2040
+keywords: [emisije, ogljik, elektrika, kapacitete, zelena energija]
 geography: Slovenia
 schedule: annual
 licenses:
@@ -13,7 +13,7 @@ licenses:
     path: http://www.opendefinition.org/licenses/odc-odbl
 resources:
   - name: electricity.additions_retirements- 
-    title: Historical and projected new additions and retirements of electricity production units
+    title: Zgodovinske in predvidene nove ter upokojene instalirane proizvodnje enote po viru goriva
     profile: tabular-data-resource
     path: data\electricity.additions_retirements.csv
     scheme: file
@@ -21,7 +21,7 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: Additions and retirements sources
+      - title: Viri novih in upokojenih enot
         code: sources/electricity_source_to_csv.py
         # path:          # path to file in repo if exists
         # url:           # url to original data source if possible
@@ -31,37 +31,37 @@ resources:
       fields:
         - name: year
           type: year
-          title: Year
+          title: Leto
         - name: additions_wind
           type: number
-          title: Wind
+          title: Vetrne elektrarne
           unit: Megawatt [MW]
         - name: additions_solar
           type: number
-          title: Solar
+          title: Sončne elektrarne
           unit: Megawatt [MW]
         - name: additions_hydro
           type: number
-          title: Hydro
+          title: Hidroelektrarne
           unit: Megawatt [MW]
         - name: additions_pump_hydro
           type: number
-          title: Pump Hydro
+          title: Črpalne hidro elektrarne
           unit: Megawatt [MW]
         - name: additions_nuclear
           type: number
-          title: Nuclear
+          title: Jedrske elektrarne
           unit: Megawatt [MW]
         - name: additions_thermal
           type: number
-          title: Lignite
+          title: Termalne elektrarne
           unit: Megawatt [MW]
         - name: retirements_thermal
           type: number
-          title: Lignite Retirements
+          title: Upokojene termalne elektrarne
           unit: Megawatt [MW]
   - name: electricity.emissions
-    title: Yearly electricity and heat production CO2 emissions energy source
+    title: Letne emisije CO2 po virih proizvodnje elektrike in toplote 
     profile: tabular-data-resource
     path: data\electricity.emissions.csv
     scheme: file
@@ -69,7 +69,7 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: CO2 Emissions sources
+      - title: Viri CO2 emisije
         code: sources/electricity_source_to_csv.py
         # path:          # path to file in repo if exists
         url: https://www.gov.si/teme/trgovanje-s-pravicami-do-emisije/ # url to original data source if possible
@@ -79,10 +79,10 @@ resources:
       fields:
         - name: year
           type: year
-          title: Year
+          title: Leto
         - name: total
           type: number
-          title: Total
+          title: Skupaj
           unit: Tonnes CO2 equivalent
         - name: energetika_ljubljana
           type: number
@@ -126,22 +126,22 @@ resources:
           unit: Tonnes CO2 equivalent
         - name: other
           type: number
-          title: Other
+          title: Ostalo
           unit: Tonnes CO2 equivalent
         - name: total-individual
           type: number
-          title: Total from Individual Sources
+          title: Skupaj po posameznih virih
           unit: Tonnes CO2 equivalent
         - name: residual
           type: number
-          title: Residual
+          title: Preostanek
           unit: Tonnes CO2 equivalent
         - name: target_2030
           type: number
-          title: Target 2030
+          title: Cilj 2030
           unit: Tonnes CO2 equivalent
   - name: electricity.installed_capacities
-    title: Electricity production installed capacities by main fuel groups
+    title: Inštalirane proizvodnje kapacitete elektrike glede na gorivo
     profile: tabular-data-resource
     path: data\electricity.installed_capacities.csv
     scheme: file
@@ -149,7 +149,7 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: Electricity production installed capacities sources
+      - title: Viri inštaliranih proizvodnjih enot
         code: sources/electricity_source_to_csv.py
         # path:          # path to file in repo if exists
         # url:           # url to original data source if possible
@@ -159,56 +159,56 @@ resources:
       fields:
         - name: year
           type: year
-          title: Year
+          title: Leto
         - name: total
           type: number
-          title: Total Installed Capacities
+          title: Skupaj instalirane kapacitete
           unit: Megawatt [MW]
         - name: thermal
           type: number
-          title: Thermal
+          title: Termoelektrarne
           unit: Megawatt [MW]
         - name: hydro
           type: number
-          title: Hydro
+          title: Hidroelektrarne
           unit: Megawatt [MW]
         - name: mixed_hydro
           type: number
-          title: Accumulation Hydro
+          title: Akumulacijske hidroelektrarne
           unit: Megawatt [MW]
         - name: pump_hydro
           type: number
-          title: Pumped Hydro
+          title: Črpalne elektrarne
           unit: Megawatt [MW]
         - name: geothermal
           type: number
-          title: Geothermal
+          title: Geotermalne elektrarne
           unit: Megawatt [MW]
         - name: wind
           type: number
-          title: Wind
+          title: Vetrne elektrarne
           unit: Megawatt [MW]
         - name: solar_thermal
           type: number
-          title: Solar Thermal
+          title: Sončne termoelektrarne
           unit: Megawatt [MW]
         - name: solar
           type: number
-          title: Solar
+          title: Sončne elektrarne
           unit: Megawatt [MW]
         - name: wave
           type: number
-          title: Wave
+          title: Valovne elektrarne
           unit: Megawatt [MW]
         - name: nuclear
           type: number
-          title: Nuclear
+          title: Jedrske elektrarne
           unit: Megawatt [MW]
         - name: other
           type: number
-          title: Other
+          title: Ostalo
           unit: Megawatt [MW]
         - name: consumption
           type: number
-          title: Consumption
+          title: Odjem
           unit: Terawatt Hour [TWh]
