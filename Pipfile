@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 frictionless = "*"
+invoke = "*"
 
 [dev-packages]
 flake8 = "*"
