@@ -117,9 +117,9 @@ Pay attention to indentation! A newly created `datapackage.yaml` file will only 
 * `sources`: should follow this template:
 ```
 sources:
-  - path:             # path to file in repo if exists
+  - title:            # name of data source - mandatory field!
+    path:             # path to file in repo if exists
     url:              # url to original data source if possible
-    title:            # name of data source
     author:           # organisation or person who is the owner of the data
     code:             # path to code in repo used to transform data into csv files if exists
     date_accessed:    # date when data was extracted in ISO format
@@ -134,14 +134,15 @@ licenses:
 
 For each individual file (i.e. resource) check the existing metadata and add or change the following (if appropriate):
 
-* `name`: for your short datapackage name, this should be the same as the folder name (e.g. emissions)
-* `title`: should be a longer name of your datapackage (e.g. Historical and projected CO2 equiv. emissions)
+* `name`: you should normally  leave the name as it was inferred (the name of the file). Otherwise be careful because no spaces are allowed in the name! (e.g. `historical.emissions.agriculture`)
+* `title`: should be a longer name describing your data file (e.g. `Historical emissions from agriculture`)
 
 If there is not a common data source for the whole package and individual files have their separate `sources` you must add them here instead:
 
 ```
 sources:
-  - path:             # path to file in repo if exists
+  - title:            # name of data source - mandatory field!
+    path:             # path to file in repo if exists
     url:              # url to original data source if possible
     title:            # name of data source
     author:           # organisation or person who is the owner of the data
