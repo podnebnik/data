@@ -5,9 +5,9 @@ import zipfile
 
 
 @task
-def zip_package(c, packageName):
+def zip(c, packageName):
     excludedFiles = [".DS_Store"]
-    zip = zipfile.ZipFile("{}.zip".format(packageName), mode="w")
+    zip = zipfile.ZipFile("packages/{}.zip".format(packageName), mode="w")
     for root, dirs, files in os.walk(packageName):
         for file in files:
             fileName = Path(root, file)
