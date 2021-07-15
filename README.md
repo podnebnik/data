@@ -9,14 +9,14 @@ Currently we provide the following data packages:
 For details about the provided data, please consult the `datapackage.yaml` files in the individual data package folders.
 
 
-## How to create your new data package
+# How to create your new data package
 
 A datapackage is a combination of data resources (`.csv` data files) and a datapackage descriptor file (`.yaml`) containing the metadata.
 
 Create a fork of the `https://github.com/podnebnik/data` repository and follow the instructions below to create your datapackage. You can also look at the existing datapackages for reference.
 
 
-### Preparing the data resources
+## Preparing the data resources
 
 Use the following template for your datapackage folder structure that you should place in the root of the `https://github.com/podnebnik/data` repository:
 
@@ -40,7 +40,7 @@ data/
 4. prepare the metadata `.yaml` file for your datapackage (see below for detailed instructions on how to do that).
 
 
-### Preparing the data files (`.csv` format)
+## Preparing the data files (`.csv` format)
 
 Data files should be in `.csv` format:
 
@@ -68,7 +68,7 @@ The variable names should be:
 * `manure_management` - OK
 
 
-### Preparing the metadata
+## Preparing the metadata
 
 Once the data files are all ready, you will
 
@@ -78,7 +78,7 @@ Once the data files are all ready, you will
 The final `.yaml` file containing the metadata should be stored at the same level as the `data/` subfolder in your datapackage.
 
 
-#### Automatic description of the datapackage
+### Automatic description of the datapackage
 
 Make sure you have python installed on your system, then install the `frictionless` package:
 
@@ -98,7 +98,7 @@ From your datapackage folder you can describe a set of `.csv` files with the hel
 This creates a `datapackage.yaml` file inferring the metadata for all files that follow the `emissions*.csv` pattern in the `data\` folder.
 
 
-#### Manually amend the datapackage metadata
+### Manually amend the datapackage metadata
 
 Open the `datapackage.yaml` file and amend it to add
 
@@ -107,11 +107,11 @@ Open the `datapackage.yaml` file and amend it to add
 
 Pay attention to indentation! A newly created `datapackage.yaml` file will only have two fields at the top level: `profile` and `resources`. You should attempt the following fields (*but if any of this metadata does not apply equally to all of the files in your datapackage, you should instead add them to the individual resources instead!*):
 
-* `contributors`: enter your name
 * `name`: for your short datapackage name, this should be the same as the folder name (e.g. emissions)
 * `title`: should be a longer name of your datapackage (e.g. Historical and projected CO2 equiv. emissions)
 * `description`: enter a longer description of your datapackage
 * `keywords`: enter relevant keywords in english as an array enclosed in square brackets (e.g. [emissions, agriculure])
+* `contributors`: enter a list of authors (please check the [specification](https://specs.frictionlessdata.io/data-package/#contributors) for the list of available fields)
 * `geography`: enter the geographic area the data refer to (e.g. Europe)
 * `schedule`: enter the time resolution for the data e.g. annual, monthly..
 * `sources`: should follow this template:
@@ -160,13 +160,34 @@ Finally, the fields in each resource: they already have the `resource.schema.fie
 * You can also add constraints for the fields, as well as missing value definitions and primary and foreign keys if necessary. See [this](https://specs.frictionlessdata.io/table-schema/#constraints) for more options.
 
 
-#### Translate the metadata
+### Translate the metadata
 
 Once you're finished editing the `datapackage.yaml` file, make a copy of the file and name it `datapakcage.si.yaml` Keeping the keys in the original English, translate the values into Slovenian for the following fields: `name`, `title`, `description`, `keywords`, `resources.name`, `resources.title`, `resources.sources.title`, `resources.sources.title`, `resources.schema.fields.title` and `resource.schema.fields.unit` as appropriate.
 
 *Do not translate any of the values for the `name` keys!*
 
 
-### Finished?
+## Finished?
 
 Once you're happy with the files, the folder structure and the `datapackage.yaml` metadata file, create a (draft) pull request tagging @joahim and @majazaloznik as reviewers.
+
+
+# Data package command line tool
+
+Frictionless Data Framework provides a command line tool to help you describe, extract and validate your data. The easiest way to install the framework is to use the [pipenv](https://pipenv.pypa.io/en/latest/) and run:
+
+```bash
+pipenv install
+```
+
+You can then run the tool with:
+
+```bash
+pipenv run frictionless
+```
+
+For example, to validate the data package, run:
+
+```bash
+pipenv run frictionless validate emissions/datapackage.yaml
+```
