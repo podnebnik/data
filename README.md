@@ -122,7 +122,7 @@ sources:
     url:              # url to original data source if possible
     author:           # organisation or person who is the owner of the data
     code:             # path to code in repo used to transform data into csv files if exists
-    date_accessed:    # date when data was extracted in ISO format
+    date_accessed:    # date when data was extracted in ISO format (e.g. 2021-07-12)
 ```
 * `licenses:` unless required otherwise by your data source, use the following:
 ```
@@ -147,7 +147,7 @@ sources:
     title:            # name of data source
     author:           # organisation or person who is the owner of the data
     code:             # path to code in repo used to transform data into csv files if exists
-    date_accessed:    # date when data was extracted in ISO format
+    date_accessed:    # date when data was extracted in ISO format (e.g. 2021-07-12)
 ```
 
 Finally, the fields in each resource: they already have the `resource.schema.fields.name` and `resource.schema.fields.type` values inferred.
