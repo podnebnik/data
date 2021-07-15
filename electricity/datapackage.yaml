@@ -2,7 +2,7 @@ profile: data-package
 name: electricity
 title: Historical and projected Slovenian Electricity Data
 contributors:
-  - Jan Bohinec
+  - title: Jan Bohinec
 description: Annual Electricity data, installed capacities per fuel type, individual power plants and electricity CO2 emissions, 1990-2040
 keywords: [emissions, electricity, installed, greenenergy, energetika]
 geography: Slovenia
