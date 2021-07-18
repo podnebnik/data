@@ -1,0 +1,214 @@
+profile: data-package
+name: electricity
+title: Zgodovinski in predvideni podatki o slovenski energetiki
+contributors:
+  - Jan Bohinec
+description: Letni podatki o instaliranih kapacitetah po gorivih, popis posameznih proizvodnjih enot nad 10 MW moči in izpusti CO2 emisij po virih proizvodnje elektrike ter toplote 1990-2040
+keywords: [emisije, ogljik, elektrika, kapacitete, zelena energija]
+geography: Slovenia
+schedule: annual
+licenses:
+  - name: ODbL-1.0
+    title: Open Data Commons Open Database License 1.0
+    path: http://www.opendefinition.org/licenses/odc-odbl
+resources:
+  - name: electricity.additions_retirements- 
+    title: Zgodovinske in predvidene nove ter upokojene instalirane proizvodnje enote po viru goriva
+    profile: tabular-data-resource
+    path: data\electricity.additions_retirements.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Viri novih in upokojenih enot
+        code: sources/electricity_source_to_csv.py
+        # path:          # path to file in repo if exists
+        # url:           # url to original data source if possible
+        author: Podnebnik        # organization or person who is the owner of the data
+        date_accessed: 29.4.2021 # date when data was extracted
+    schema:
+      fields:
+        - name: year
+          type: year
+          title: Leto
+        - name: additions_wind
+          type: number
+          title: Vetrne elektrarne
+          unit: Megawatt [MW]
+        - name: additions_solar
+          type: number
+          title: Sončne elektrarne
+          unit: Megawatt [MW]
+        - name: additions_hydro
+          type: number
+          title: Hidroelektrarne
+          unit: Megawatt [MW]
+        - name: additions_pump_hydro
+          type: number
+          title: Črpalne hidro elektrarne
+          unit: Megawatt [MW]
+        - name: additions_nuclear
+          type: number
+          title: Jedrske elektrarne
+          unit: Megawatt [MW]
+        - name: additions_thermal
+          type: number
+          title: Termalne elektrarne
+          unit: Megawatt [MW]
+        - name: retirements_thermal
+          type: number
+          title: Upokojene termalne elektrarne
+          unit: Megawatt [MW]
+  - name: electricity.emissions
+    title: Letne emisije CO2 po virih proizvodnje elektrike in toplote 
+    profile: tabular-data-resource
+    path: data\electricity.emissions.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Viri CO2 emisije
+        code: sources/electricity_source_to_csv.py
+        # path:          # path to file in repo if exists
+        url: https://www.gov.si/teme/trgovanje-s-pravicami-do-emisije/ # url to original data source if possible
+        author: ARSO, MINISTRSTVO ZA OKOLJE IN PROSTOR, DIREKTORAT ZA OKOLJE # owner of the data
+        date_accessed: 29.4.2021 # date when data was extracted
+    schema:
+      fields:
+        - name: year
+          type: year
+          title: Leto
+        - name: total
+          type: number
+          title: Skupaj
+          unit: Tonnes CO2 equivalent
+        - name: energetika_ljubljana
+          type: number
+          title: Energetika Ljubljana
+          unit: Tonnes CO2 equivalent
+        - name: energetika_maribor
+          type: number
+          title: Energetika Maribor
+          unit: Tonnes CO2 equivalent
+        - name: teb
+          type: number
+          title: Termoelektrarna Brestanica
+          unit: Tonnes CO2 equivalent
+        - name: test
+          type: number
+          title: Termoelektrarna Šoštanj
+          unit: Tonnes CO2 equivalent
+        - name: tetol
+          type: number
+          title: Termoelektrarna Toplarna Ljubljana
+          unit: Tonnes CO2 equivalent
+        - name: tet
+          type: number
+          title: Termoelektrarna Trbovlje
+          unit: Tonnes CO2 equivalent
+        - name: energetika_celje
+          type: number
+          title: Energetika Celje
+          unit: Tonnes CO2 equivalent
+        - name: enos
+          type: number
+          title: Enos
+          unit: Tonnes CO2 equivalent
+        - name: m_energetika
+          type: number
+          title: M Energetika
+          unit: Tonnes CO2 equivalent
+        - name: petrol_energetika
+          type: number
+          title: Petrol Energetika
+          unit: Tonnes CO2 equivalent
+        - name: other
+          type: number
+          title: Ostalo
+          unit: Tonnes CO2 equivalent
+        - name: total-individual
+          type: number
+          title: Skupaj po posameznih virih
+          unit: Tonnes CO2 equivalent
+        - name: residual
+          type: number
+          title: Preostanek
+          unit: Tonnes CO2 equivalent
+        - name: target_2030
+          type: number
+          title: Cilj 2030
+          unit: Tonnes CO2 equivalent
+  - name: electricity.installed_capacities
+    title: Inštalirane proizvodnje kapacitete elektrike glede na gorivo
+    profile: tabular-data-resource
+    path: data\electricity.installed_capacities.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Viri inštaliranih proizvodnjih enot
+        code: sources/electricity_source_to_csv.py
+        # path:          # path to file in repo if exists
+        # url:           # url to original data source if possible
+        author: Podnebnik        # organization or person who is the owner of the data
+        date_accessed: 29.4.2021 # date when data was extracted
+    schema:
+      fields:
+        - name: year
+          type: year
+          title: Leto
+        - name: total
+          type: number
+          title: Skupaj instalirane kapacitete
+          unit: Megawatt [MW]
+        - name: thermal
+          type: number
+          title: Termoelektrarne
+          unit: Megawatt [MW]
+        - name: hydro
+          type: number
+          title: Hidroelektrarne
+          unit: Megawatt [MW]
+        - name: mixed_hydro
+          type: number
+          title: Akumulacijske hidroelektrarne
+          unit: Megawatt [MW]
+        - name: pump_hydro
+          type: number
+          title: Črpalne elektrarne
+          unit: Megawatt [MW]
+        - name: geothermal
+          type: number
+          title: Geotermalne elektrarne
+          unit: Megawatt [MW]
+        - name: wind
+          type: number
+          title: Vetrne elektrarne
+          unit: Megawatt [MW]
+        - name: solar_thermal
+          type: number
+          title: Sončne termoelektrarne
+          unit: Megawatt [MW]
+        - name: solar
+          type: number
+          title: Sončne elektrarne
+          unit: Megawatt [MW]
+        - name: wave
+          type: number
+          title: Valovne elektrarne
+          unit: Megawatt [MW]
+        - name: nuclear
+          type: number
+          title: Jedrske elektrarne
+          unit: Megawatt [MW]
+        - name: other
+          type: number
+          title: Ostalo
+          unit: Megawatt [MW]
+        - name: consumption
+          type: number
+          title: Odjem
+          unit: Terawatt Hour [TWh]
