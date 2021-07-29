@@ -9,6 +9,8 @@ def zip(c, packageName):
     excludedFiles = [".DS_Store"]
     zip = zipfile.ZipFile("packages/{}.zip".format(packageName), mode="w")
     for root, dirs, files in os.walk(packageName):
+        if root == "{}/sources".format(packageName):  # exclude sources
+            continue
         for file in files:
             fileName = Path(root, file)
             if file not in excludedFiles:
