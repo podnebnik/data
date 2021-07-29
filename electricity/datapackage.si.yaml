@@ -212,3 +212,67 @@ resources:
           type: number
           title: Odjem
           unit: Terawatt Hour [TWh]
+  - name: electricity.production
+    title: Proizvodnja električne energije po gorivih 1996-2050
+    profile: tabular-data-resource
+    path: data/electricity.production.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Proizvodnja električne energije
+        code: sources/electricity_source_to_csv.py
+        # path:          # path to file in repo if exists
+        # url:           # url to original data source if possible
+        author: Podnebnik        # organization or person who is the owner of the data
+        date_accessed: 2021-07-29
+    schema:
+      fields:
+        - name: year
+          type: year
+          title: Leto
+        - name: total_production
+          type: number
+          title: Skupna proizvodnja
+          unit: Gigawatt hours [GWh]
+        - name: hydro
+          type: number
+          title: Hidroenergija
+          unit: Gigawatt hours [GWh]
+        - name: pump
+          type: number
+          title: Črpalne elektrarne
+          unit: Gigawatt hours [GWh]
+        - name: thermal
+          type: number
+          title: Termoelektrarne
+          unit: Gigawatt hours [GWh]
+        - name: biomass
+          type: number
+          title: Biomasa in bioplin
+          unit: Gigawatt hours [GWh]
+        - name: nuclear
+          type: number
+          title: Nuklearna energija
+          unit: Gigawatt hours [GWh]
+        - name: solar
+          type: number
+          title: Sončna energija
+          unit: Gigawatt hours [GWh]
+        - name: wind
+          type: number
+          title: Vetrna energija
+          unit: Gigawatt hours [GWh]
+        - name: event_tes6
+          type: number
+          title: Zaprtje TEŠ6
+          unit: Year
+        - name: event_NEK2
+          type: number
+          title: Začetek obratovanja NEK2
+          unit: Year
+        - name: event_greenenergy
+          type: number
+          title: 100% razogljičenje
+          unit: Year

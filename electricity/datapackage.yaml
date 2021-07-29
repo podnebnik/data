@@ -212,3 +212,67 @@ resources:
           type: number
           title: Consumption
           unit: Terawatt Hour [TWh]
+  - name: electricity.production
+    title: Electricity production quantities by main fuel groups 1996-2050
+    profile: tabular-data-resource
+    path: data/electricity.production.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Electricity production quantities
+        code: sources/electricity_source_to_csv.py
+        # path:          # path to file in repo if exists
+        # url:           # url to original data source if possible
+        author: Podnebnik        # organization or person who is the owner of the data
+        date_accessed: 2021-07-29
+    schema:
+      fields:
+        - name: year
+          type: year
+          title: Year
+        - name: total_production
+          type: number
+          title: Total production
+          unit: Gigawatt hours [GWh]
+        - name: hydro
+          type: number
+          title: Hydro
+          unit: Gigawatt hours [GWh]
+        - name: pump
+          type: number
+          title: Pump Hydro
+          unit: Gigawatt hours [GWh]
+        - name: thermal
+          type: number
+          title: Thermal
+          unit: Gigawatt hours [GWh]
+        - name: biomass
+          type: number
+          title: Biomass and biogas
+          unit: Gigawatt hours [GWh]
+        - name: nuclear
+          type: number
+          title: Nuclear
+          unit: Gigawatt hours [GWh]
+        - name: solar
+          type: number
+          title: Solar
+          unit: Gigawatt hours [GWh]
+        - name: wind
+          type: number
+          title: Wind
+          unit: Gigawatt hours [GWh]
+        - name: event_tes6
+          type: number
+          title: Closure of TES6
+          unit: Year
+        - name: event_NEK2
+          type: number
+          title: NEK2 Operational
+          unit: Year
+        - name: event_greenenergy
+          type: number
+          title: Clean energy mix
+          unit: Year

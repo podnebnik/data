@@ -100,7 +100,34 @@ if __name__ == '__main__':
     data.to_csv("..\data\electricity.emissions.csv",index=False) 
     
     
-    # electricity.hydro_units
+    # electricity.yearly_production
+    
+    data = pd.read_excel("Energetska bilanca, STAT.si in Podnebnik.xlsx", sheet_name = "Casovnica", header = 0)
+    
+    data = data[['Leto', 'Skupaj proizvodnja', 'Proizvodnja na pragu-hidroelektrarne', 'Proizvodnja na pragu-hidroelektrarne-od tega s prečrpavanjem',
+       'Proizvodnja na pragu-termoelektrarne', 'Biomasa in bioplin', 'NEK',
+       'Proizvodnja na pragu-sončne elektrarne', 'Proizvodnja na pragu-vetrne elektrarne', 'Dogodek Zaprtje TEŠ6', 
+       'Dogodek Začetek obratovanja NEK2', 'Dogodek 100% razogljičenje', 'Skupna raba (končna + izgube + črpanje)']]
+    
+    
+    data = data.rename(columns = {
+        'Leto': 'year',
+        'Skupaj proizvodnja': 'total_production', 
+        'Proizvodnja na pragu-hidroelektrarne': 'hydro', 
+        'Proizvodnja na pragu-hidroelektrarne-od tega s prečrpavanjem': 'pump', 
+        'Proizvodnja na pragu-termoelektrarne': 'thermal',
+       'Biomasa in bioplin': 'biomass', 
+       'NEK': 'nuclear', 
+       'Proizvodnja na pragu-sončne elektrarne': 'solar', 
+       'Proizvodnja na pragu-vetrne elektrarne': 'wind',
+       'Dogodek Zaprtje TEŠ6': 'event_tes6', 
+       'Dogodek Začetek obratovanja NEK2': 'event_NEK2', 
+       'Dogodek 100% razogljičenje': 'event_greenenergy',
+       'Skupna raba (končna + izgube + črpanje)': 'total_consumption'
+        })
+ 
+    data.to_csv("..\data\electricity.production.csv",index=False) 
+    
     # TODO
     
     # electricity.thermal_units
