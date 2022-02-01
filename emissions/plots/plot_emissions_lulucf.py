@@ -9,10 +9,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# intro
+# https://www.ipcc-nggip.iges.or.jp/public/2006gl/vol4.html
 
 # import historical data
 df = pd.read_csv("../data/emissions.historical.lulucf.csv")
-data = df.as_matrix()
+data = df.values
 
 years = data[:,0]
 data = data[:,2:-1]
@@ -78,8 +80,8 @@ legend2 = ax.add_artist(leg)
 legend2.get_title().set_fontsize('18')
 
 
-ax.axvspan(0, 2020, alpha=0.1, color='gray')
+ax.axvspan(0, 2021, alpha=0.1, color='gray')
 
 #ax.legend(ncol=2,fontsize=18,loc=4)
 plt.tight_layout()
-plt.savefig("lulucf.png",dpi=300)
+plt.savefig("lulucf_2022.png",dpi=300)

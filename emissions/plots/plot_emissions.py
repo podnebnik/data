@@ -15,13 +15,16 @@ import matplotlib.pyplot as plt
 
 # import historical data
 df = pd.read_csv("../data/emissions.historical.csv")
-data = df.as_matrix()
+data = df.to_numpy()
 
 years = data[:,0]
 data = np.nan_to_num(data)
 data = data[:,2:-1]
-#data = np.concatenate((data[:,],data[:]),axis=1)
 data = data.transpose()
+
+# rearrange data, so intl aviation, navigation and biomass burning come last
+data = np.concatenate((data[:7],data[10][np.newaxis,:],data[7:10]),axis=0)
+
 data_shape = np.shape(data)
 
 def get_cumulated_array(data, **kwargs):
@@ -57,16 +60,17 @@ ax.set_ylabel(r"emisije [kt ekvivalent CO$_2$]",fontsize=18)
 ax.set_xlim([1984,2032])
 ax.set_ylim([-1000,26000])
 ax.tick_params(axis='both', which='major', labelsize=16)
-ax.set_title("Viri emisij toplogrednih plinov",fontsize=18)
+# ax.set_title("Viri emisij toplogrednih plinov",fontsize=18)
 
-cols = ["blueviolet","black","blue","grey","firebrick","orange","darkkhaki","navy","aqua","saddlebrown","slategray"]
+cols = ["blueviolet","black","blue","grey","firebrick","orange","darkkhaki","slategray","navy","aqua","saddlebrown"]
 labels = ["Oskrba z energijo","Industrija in gradbeništvo","Promet","Industrijski procesi",\
           "Raba goriv v gospodinjstvih,\nkomercialnih stavbah, kmetijstvu,\ngozdarstvu, ribištvu","Kmetijstvo",\
-          "Odpadki","Mednarodni letalski promet","Mednarodni ladijski promet","Biomasa (kurjenje lesa,\npožari)","Ostalo"]
+          "Odpadki","Ostalo","Mednarodni letalski promet","Mednarodni ladijski promet","Biomasa (kurjenje lesa,\npožari)"]
+hatches = 8*[None] + 3*['//']   
      
 for i in np.arange(0, data_shape[0]):
-    ax.bar(years, data[i], bottom=data_stack[i], color=cols[i], label=labels[i],align="edge")
-ax.plot(years+0.5,data.sum(axis=0)-data[-2]-data[-3]-data[-4], lw=5, color="black",label="Skupaj - brez biomase \nin mednarodnega prometa")    
+    ax.bar(years, data[i], bottom=data_stack[i], color=cols[i], label=labels[i],align="edge",hatch=hatches[i])
+ax.plot(years+0.5,data[:8].sum(axis=0), lw=5, color="black",label="Skupaj - brez biomase \nin mednarodnega prometa")    
 
 legend=ax.legend(fontsize=18,ncol=2,bbox_to_anchor=(0., -0.1),loc='upper left',title="Zgodovinske vrednosti")
 legend.get_title().set_fontsize('18')
@@ -103,11 +107,11 @@ leg = Legend(ax, lines, \
 legend2 = ax.add_artist(leg)
 legend2.get_title().set_fontsize('18')
 
-ax.axvspan(0, 2020, alpha=0.1, color='gray')
+ax.axvspan(0, 2021, alpha=0.1, color='gray')
 
 #plt.legend(ncol=2,fontsize=18,bbox_to_anchor=(1.02, 1), loc='upper left')
 fig.tight_layout()
-fig.savefig("total.png",dpi=300)
+fig.savefig("total_2022.png",dpi=300)
 
 
 ##%% read projections (Aljoša Slameršak)

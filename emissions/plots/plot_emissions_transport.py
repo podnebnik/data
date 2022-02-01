@@ -12,10 +12,10 @@ import matplotlib.pyplot as plt
 
 # import historical data
 df = pd.read_csv("../data/emissions.historical.energy.transport.csv")
-data = df.as_matrix()
+data = df.to_numpy()
 
 years = data[:,0]
-data = data[:,3:-1]
+data = data[:,3:]
 data = data.transpose()
 
 data_shape = np.shape(data)
@@ -51,14 +51,17 @@ ax.set_xlim([1984,2032])
 ax.set_ylim([-1000,8000])
 ax.tick_params(axis='both', which='major', labelsize=16)
 
-cols = ["royalblue","blue","darkblue","deepskyblue","lightblue","slategrey","midnightblue","darkturquoise","lightsteelblue","navy","aqua"]
-labels = ["avtomobili","lahka tovorna vozila","težka tovoarna vozila in avtobusi","motocikli",\
+cols = ["lightblue","dodgerblue","blue","lightskyblue","lightcyan",\
+        "deepskyblue","silver","plum","darkturquoise","lightsteelblue","violet","aqua"]
+labels = ["avtomobili","lahka tovorna vozila","težka tovorna vozila","avtobusi","motocikli",\
           "ostala cestna vozila","železniški promet","notranji letalski promet","notranji ladijski promet","ostalo",\
           "mednarodni letalski promet","mednarodni ladijski promet"]
-        
+hatches = 10*[None] + ['//','//']   
+
+
 for i in np.arange(0, data_shape[0]):
-    ax.bar(years, data[i], bottom=data_stack[i], color=cols[i], label=labels[i],align="edge")
-ax.plot(years,data[:8].sum(axis=0), lw=5, color="black",label="skupaj")
+    ax.bar(years, data[i], bottom=data_stack[i], color=cols[i], label=labels[i],align="edge",hatch=hatches[i])
+ax.plot(years,data[:8].sum(axis=0), lw=5, color="black",label="skupaj (brez medn. prometa)")
 legend=ax.legend(fontsize=18,ncol=2,bbox_to_anchor=(0.1, -0.1),loc='upper left',title="Zgodovinske vrednosti")
 legend.get_title().set_fontsize('18')
     
@@ -83,8 +86,8 @@ legend2 = ax.add_artist(leg)
 legend2.get_title().set_fontsize('18')
 
 
-ax.axvspan(0, 2020, alpha=0.1, color='gray')
+ax.axvspan(0, 2021, alpha=0.1, color='gray')
 
 #ax.legend(ncol=2,fontsize=18,loc=4)
 plt.tight_layout()
-plt.savefig("promet.png",dpi=300)
+plt.savefig("promet_2022.png",dpi=300)

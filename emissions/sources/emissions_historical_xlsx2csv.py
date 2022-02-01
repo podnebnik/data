@@ -11,8 +11,8 @@ import numpy as np
 
 
 
-df = pd.read_excel("emissions_historical.xlsx",sheet_name="Sheet1")
-emissions_historical = df.as_matrix()
+df = pd.read_excel("emissions_historical_2022.xlsx",sheet_name="Sheet1")
+emissions_historical = df.values[:,1:]
 
 # emission indices from file emissions_total.xlsx
 ei= {"total_net" : 0 ,
@@ -92,7 +92,8 @@ ei= {"total_net" : 0 ,
     }
      
 
-years = np.arange(1986,2020)
+years = np.arange(1986,2021)
+
 
 df = pd.DataFrame({
         'year': years.astype(int),
