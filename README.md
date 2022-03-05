@@ -21,9 +21,9 @@ Create a fork of the `https://github.com/podnebnik/data` repository and follow t
 Use the following template for your datapackage folder structure that you should place in the root of the `https://github.com/podnebnik/data` repository:
 
 ```
-data/
+dataset/
     - emissions/
-        - data/
+        - dataset/
             - sources/
                 emissions.xlsx
                 pipeline.py
@@ -35,8 +35,8 @@ data/
 ```
 
 1. give your datapackage a unique and descriptive name (e.g. "emissions") and name the folder in root.
-2. within the folder create a `data/sources/` subfolder for the original data files (if they exist) and any for code used to transform the data into `.csv` files.
-3. place the `.csv` files into the `data/` subfolder (see below for more details on these files)
+2. within the folder create a `dataset/sources/` subfolder for the original data files (if they exist) and any for code used to transform the data into `.csv` files.
+3. place the `.csv` files into the `dataset/` subfolder (see below for more details on these files)
 4. prepare the metadata `.yaml` file for your datapackage (see below for detailed instructions on how to do that).
 
 
@@ -75,7 +75,7 @@ Once the data files are all ready, you will
 1. use the `python` package `frictionless` to infer the basic metadata directly from the files into a `.yaml` file
 2. manually add the information that cannot be inferred into the `.yaml` file just created.
 
-The final `.yaml` file containing the metadata should be stored at the same level as the `data/` subfolder in your datapackage.
+The final `.yaml` file containing the metadata should be stored at the same level as the `dataset/` subfolder in your datapackage.
 
 
 ### Automatic description of the datapackage
@@ -93,7 +93,7 @@ The `frictionless` command `describe` will automatically create the basic metada
 
 From your datapackage folder you can describe a set of `.csv` files with the help of the `*` wildcard operator like in the following example.
 
-    frictionless describe data/emissions*.csv --yaml > datapackage.yaml
+    frictionless describe dataset/emissions*.csv --yaml > datapackage.yaml
 
 This creates a `datapackage.yaml` file inferring the metadata for all files that follow the `emissions*.csv` pattern in the `data\` folder.
 
