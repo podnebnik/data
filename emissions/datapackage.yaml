@@ -3,9 +3,15 @@ name: emissions
 title: Historical and projected CO2 equiv. emissions
 contributors:
   - title: Žiga Zaplotnik
-    role": author
-    path: https://twitter.com/zaplotnikziga
-description: Annual C02 equivalent emissions from 1986 to most recent year available as well as projections until...
+    role: author
+    path: https://zaplotnik.github.io/
+  - title: Tajda Mekinda Majaron (ARSO)
+    role: data provider
+    path: https://si.linkedin.com/in/tajda-mekinda-majaron-a1194552
+  - title: Aljoša Slameršak
+    role: creator of sources/ProjekcijeGHG_Slovenija.xlsx
+    path: https://ictaweb.uab.cat/personal_detail.php?id=4088
+description: Annual C02 equivalent emissions from 1986 to most recent year available as well as projections until 2050
 keywords: [emissions, historical, projections]
 geography: Slovenia
 schedule: annual
@@ -23,12 +29,12 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: TODO
-        code: sources/xls_to_csv.py
-        # path:          # path to file in repo if exists
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_xlsx2csv.py
+        # path: sources/emissions_historical.xlsx         
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-17
     schema:
       fields:
         - name: year
@@ -37,75 +43,35 @@ resources:
         - name: total
           type: number
           title: Total emissions from agriculture
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: enteric_fermentation
           title: Enteric fermentation
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: manure_management
           title: Manure management
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
+        - name: rice_cultivation
+          title: Rice cultivation
+          type: number
+          unit: kilotonnes CO2 equivalent
         - name: agricultural_soils
           title: Agricultural soils
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: liming
           title: Liming
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: urea_application
           title: Urea application
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: fertilizers
           title: Other fertilizers
           type: number
-          unit: tonnes CO2 equivalent
-  - name: historical_emissions_from_aviation
-    title: Historical emissions from aviation
-    profile: tabular-data-resource
-    path: data/emissions.historical.aviation.csv
-    scheme: file
-    format: csv
-    encoding: utf-8
-    hashing: md5
-    sources:
-      - title: TODO
-        path: sources/aviation.xlsx
-        author: OECD
-        code: sources/xls_to_csv.py
-        date_accessed: "2020-03-08"
-        # url:           # url to original data source if possible
-    schema:
-      fields:
-        - name: year
-          type: integer
-        - name: total_by_residence_principle
-          type: number
-          unit: tonnes CO2 equivalent
-  - name: historical_emissions_from_biomass
-    title: Historical emissions from biomass
-    profile: tabular-data-resource
-    path: data/emissions.historical.biomass.csv
-    scheme: file
-    format: csv
-    encoding: utf-8
-    hashing: md5
-    sources:
-      - title: TODO      # data source title
-        code: sources/xls_to_csv.py
-        # path:          # path to file in repo if exists
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
-    schema:
-      fields:
-        - name: year
-          type: year
-        - name: total
-          type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
   - name: historical_emissions
     title: Historical emissions
     profile: tabular-data-resource
@@ -115,43 +81,55 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: TODO      # data source title
-        code: sources/xls_to_csv.py
-        # path:          # path to file in repo if exists
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_xlsx2csv.py
+        # path: sources/emissions_historical.xlsx         
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-17
     schema:
       fields:
         - name: year
           type: year
-        - name: total
+        - name: total_source
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
+        - name: energy_industries
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: manufacturing_construction_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
         - name: transport
           type: number
-          unit: tonnes CO2 equivalent
-        - name: energy
+          unit: kilotonnes CO2 equivalent
+        - name: industrial_processes
           type: number
-          unit: tonnes CO2 equivalent
-        - name: industrial
+          unit: kilotonnes CO2 equivalent
+        - name: residential_commercial_agricultural_forestry_fishing_fuels
           type: number
-          unit: tonnes CO2 equivalent
-        - name: industrial_fuels
-          type: number
-          unit: tonnes CO2 equivalent
-        - name: household_fuels
-          type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: agriculture
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: waste
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
+        - name: international_aviation
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: international_navigation
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: co2_emissions_from_biomass
+          type: number
+          unit: kilotonnes CO2 equivalent
         - name: others
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
+        - name: lulucf
+          type: number
+          unit: kilotonnes CO2 equivalent
   - name: historical_emissions_from_energy
     title: Historical emissions from energy
     profile: tabular-data-resource
@@ -161,47 +139,104 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: TODO    # data source title
-        code: sources/xls_to_csv.py
-        # path:          # path to file in repo if exists
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_xlsx2csv.py
+        # path: sources/emissions_historical.xlsx         
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-17
     schema:
       fields:
         - name: year
           type: year
-          unit: tonnes CO2 equivalent
         - name: total
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fuel_combustion__total
+          unit: kilotonnes CO2 equivalent
+        - name: fuel_combustion_activities.total
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fuel_combustion__energy_industries
+          unit: kilotonnes CO2 equivalent
+        - name: fuel_combustion_activities.energy_industries
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fuel_combustion__manufacturing_construction
+          unit: kilotonnes CO2 equivalent
+        - name: fuel_combustion_activities.manufacturing_construction
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fuel_combustion__transport
+          unit: kilotonnes CO2 equivalent
+        - name: fuel_combustion_activities.transport
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fuel_combustion__other_sectors
+          unit: kilotonnes CO2 equivalent
+        - name: fuel_combustion_activities.other_sectors
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fuel_combustion__other
+          unit: kilotonnes CO2 equivalent
+        - name: fuel_combustion_activities.other
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fugitive_emissions__total
+          unit: kilotonnes CO2 equivalent
+        - name: fugitive_emissions_from_fuels.total
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fugitive_emissions__solid_fuels
+          unit: kilotonnes CO2 equivalent
+        - name: fugitive_emissions_from_fuels.solid_fuels
           type: number
-          unit: tonnes CO2 equivalent
-        - name: fugitive_emissions__oil_gas_other
+          unit: kilotonnes CO2 equivalent
+        - name: fugitive_emissions_from_fuels.oil_natural_gas_and_energy_production
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
+  - name: historical_emissions_from_transport
+    title: Historical emissions from transport
+    profile: tabular-data-resource
+    path: data/emissions.historical.energy.transport.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_transport_xlsx2csv.py
+        # path: sources/SVN_2021__14032021_193543/*.xlsx     
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-21
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: road_transporation.total
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: road_transporation.cars
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: road_transporation.light_duty_trucks
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: road_transporation.heavy_duty_trucks_buses
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: road_transporation.motorcycles
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: road_transporation.other
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: railways
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: domestic_aviation
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: domestic_navigation
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: other_transportation
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: international_aviation
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: international_navigation
+          type: number
+          unit: kilotonnes CO2 equivalent
   - name: historical_emissions_from_industrial_processes
     title: Historical emissions from industrial processes
     profile: tabular-data-resource
@@ -211,70 +246,42 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: TODO    # data source title
-        code: sources/xls_to_csv.py
-        # path:          # path to file in repo if exists
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_xlsx2csv.py
+        # path: sources/emissions_historical.xlsx         
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-17
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: mineral_industry
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: chemical_industry
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: metal_industry
           type: number
-          unit: tonnes CO2 equivalent
-        - name: non_energy_products
+          unit: kilotonnes CO2 equivalent
+        - name: non_energy_products_from_fuels
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: electronic_industry
-          type: string
-          unit: tonnes CO2 equivalent
-        - name: product_uses_as_ods
-          type: string
-          unit: tonnes CO2 equivalent
-        - name: other_product_manufacture
           type: number
-          unit: tonnes CO2 equivalent
-  - name: historical_emissions_from_international_travel # a je to res?
-    title: Historical emissions from international travel # a je to res?
-    profile: tabular-data-resource
-    path: data/emissions.historical.international.csv
-    scheme: file
-    format: csv
-    encoding: utf-8
-    hashing: md5
-    sources:
-      - title: TODO    # data source title
-        code: sources/xls_to_csv.py
-        # path:          # path to file in repo if exists
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
-    schema:
-      fields:
-        - name: year
-          type: year
-        - name: total
+          unit: kilotonnes CO2 equivalent
+        - name: product_usese_as_ODS
           type: number
-          unit: tonnes CO2 equivalent
-        - name: aviation
+          unit: kilotonnes CO2 equivalent
+        - name: other_product_manufacture_use
           type: number
-          unit: tonnes CO2 equivalent
-        - name: navigation
-          type: string
-          unit: tonnes CO2 equivalent
-  - name: historical_emissions_from_land_use_and_land_use_change
-    title: Historical emissions from land use and land use change
+          unit: kilotonnes CO2 equivalent
+  - name: historical_emissions_from_land_use_and_land_use_change_and_forestry
+    title: Historical emissions from land use, land use change and forestry
     profile: tabular-data-resource
     path: data/emissions.historical.lulucf.csv
     scheme: file
@@ -282,40 +289,40 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: TODO    # data source title
-        code: sources/xls_to_csv.py
-        # path:          # path to file in repo if exists
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_xlsx2csv.py
+        # path: sources/emissions_historical.xlsx         
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-17
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: forest_land
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: cropland
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: grassland
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: wetlands
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: settlements
           type: number
-          unit: tonnes CO2 equivalent
-        - name: other_lands
+          unit: kilotonnes CO2 equivalent
+        - name: other_land
           type: number
-          unit: tonnes CO2 equivalent
-        - name: harvested_wood
+          unit: kilotonnes CO2 equivalent
+        - name: harvested_wood_prducts
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
   - name: historical_emissions_from_waste
     title: Historical emissions from waste
     path: data/emissions.historical.waste.csv
@@ -324,62 +331,389 @@ resources:
     encoding: utf-8
     hashing: md5
     sources:
-      - title: TODO    # data source title
-        path: emissions/sources/TGP 1986-2019.xlsx
-        code: sources/xls_to_csv.py
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_xlsx2csv.py
+        # path: sources/emissions_historical.xlsx         
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-17
     schema:
       fields:
         - name: year
           type: year
         - name: total
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: solid_waste_disposal
           type: number
-          unit: tonnes CO2 equivalent
-        - name: biotreatment_solid_waste
-          type: string # this shouldn't be a string obvs, need to define missing values!
-          unit: tonnes CO2 equivalent
-        - name: incineration
+          unit: kilotonnes CO2 equivalent
+        - name: biological_treatment_solid_waste
+          type: number 
+          unit: kilotonnes CO2 equivalent
+        - name: incineration_open_burning_waste
           type: number
-          unit: tonnes CO2 equivalent
-        - name: waste_water
+          unit: kilotonnes CO2 equivalent
+        - name: waste_water_treatment_discharge
           type: number
-          unit: tonnes CO2 equivalent
-  - name: projections_of_emissions
-    title: Projections of emissions
-    profile: tabular-data-resource
-    path: data/emissions.projections.csv
+          unit: kilotonnes CO2 equivalent
+  - name: historical_emissions_from_memo_items
+    title: Historical emissions from Memo items
+    path: data/emissions.historical.memo_items.csv
     scheme: file
     format: csv
     encoding: utf-8
     hashing: md5
     sources:
-      - title: TODO    # data source title
-        path: emissions/sources/ProjekcijeGHG_Slovenija.xlsx
-        code: sources/xls_to_csv.py
-        # url:           # url to original data source if possible
-        # author:        # organization or person who is the owner of the data
-        # date_accessed: # date when data was extracted
+      - title: Historical emissions by sectors
+        code: sources/emissions_historical_xlsx2csv.py
+        # path: sources/emissions_historical.xlsx         
+        # url:  http://cdr.eionet.europa.eu/si/eu/mmr/art07_inventory/ghg_inventory/envye545g/       
+        # author: ARSO
+        # date_accessed: 2021-07-17
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: international_bunkers.total
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: international_bunkers.aviation
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: international_bunkers.navigation
+          type: string 
+          unit: kilotonnes CO2 equivalent
+        - name: multilateral_operations
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: co2_emissions_from_biomass
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: longerim_storage_waste_disposal
+          type: number
+          unit: kilotonnes CO2 equivalent
+  - name: projections_of_emissions
+    title: Projections of emissions
+    profile: tabular-data-resource
+    path: data/emissions.projections.ec_paris.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Projections of GHGs based on Paris agreement, European comission
+        path: sources/ProjekcijeGHG_Slovenija.xlsx
+        code: sources/ec_paris_projections_xlsx2csv.py
+        # url:  https://ec.europa.eu/clima/policies/strategies/2030_en
+        # author:        European Comission and United Nations Environment Programme (2020), Emissions Gap Report 2020, Nairobi
+        # date_accessed: 2021-02-16
     schema:
       fields:
         - name: year
           type: year
         - name: bau
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: nepn
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: ec
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: paris20
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
         - name: paris15
           type: number
-          unit: tonnes CO2 equivalent
+          unit: kilotonnes CO2 equivalent
+  - name: projections_of_emissions_nepn_bau
+    title: Projections of emissions based on NEPN business as usual (BAU)
+    profile: tabular-data-resource
+    path: data/emissions.projections.bau.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Projections of emissions - NEPN
+        path: sources/energetska_bilanca_2050_nepn_dps.xlsx
+        code: sources/nepn_projections_xlsx2csv.py
+        # url:  https://www.energetika-portal.si/fileadmin/dokumenti/publikacije/nepn/dokumenti/energetska_bilanca_2050_nepn_dps.xlsx
+        # author:        Vlada RS, IJS CEU
+        # date_accessed: 2021-07-17
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total_source
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: energy_industries
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: manufacturing_construction_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: transport
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: industrial_processes
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: residential_commercial_agricultural_forestry_fishing_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: agriculture
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: waste
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: others
+          type: number
+          unit: kilotonnes CO2 equivalent
+  - name: projections_of_emissions_nepn_current
+    title: Projections of emissions based on NEPN current trajectory
+    profile: tabular-data-resource
+    path: data/emissions.projections.current.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Projections of emissions - NEPN
+        path: sources/energetska_bilanca_2050_nepn_dps.xlsx
+        code: sources/nepn_projections_xlsx2csv.py
+        # url:  https://www.energetika-portal.si/fileadmin/dokumenti/publikacije/nepn/dokumenti/energetska_bilanca_2050_nepn_dps.xlsx
+        # author:        Vlada RS, IJS CEU
+        # date_accessed: 2021-07-18
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total_source
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: energy_industries
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: manufacturing_construction_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: transport
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: industrial_processes
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: residential_commercial_agricultural_forestry_fishing_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: agriculture
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: waste
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: others
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: lulucf
+          type: number
+          unit: kilotonnes CO2 equivalent
+  - name: projections_of_emissions_nepn_ambitious_additional_nuclear
+    title: Projections of emissions based on NEPN with ambitious additional measures, nuclear scenario
+    profile: tabular-data-resource
+    path: data/emissions.projections.ambitious_additional_nuclear.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Projections of emissions - NEPN
+        path: sources/energetska_bilanca_2050_nepn_dps.xlsx
+        code: sources/nepn_projections_xlsx2csv.py
+        # url:  https://www.energetika-portal.si/fileadmin/dokumenti/publikacije/nepn/dokumenti/energetska_bilanca_2050_nepn_dps.xlsx
+        # author:        Vlada RS, IJS CEU
+        # date_accessed: 2021-07-18
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total_source
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: energy_industries
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: manufacturing_construction_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: transport
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: industrial_processes
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: residential_commercial_agricultural_forestry_fishing_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: agriculture
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: waste
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: others
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: lulucf
+          type: number
+          unit: kilotonnes CO2 equivalent
+  - name: projections_of_emissions_nepn_ambitious_additional_synthetic
+    title: Projections of emissions based on NEPN with ambitious additional measures, climate neutral synthetic gas scenario
+    profile: tabular-data-resource
+    path: data/emissions.projections.ambitious_additional_synthetic.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Projections of emissions - NEPN
+        path: sources/energetska_bilanca_2050_nepn_dps.xlsx
+        code: sources/nepn_projections_xlsx2csv.py
+        # url:  https://www.energetika-portal.si/fileadmin/dokumenti/publikacije/nepn/dokumenti/energetska_bilanca_2050_nepn_dps.xlsx
+        # author:        Vlada RS, IJS CEU
+        # date_accessed: 2021-07-18
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total_source
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: energy_industries
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: manufacturing_construction_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: transport
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: industrial_processes
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: residential_commercial_agricultural_forestry_fishing_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: agriculture
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: waste
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: others
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: lulucf
+          type: number
+          unit: kilotonnes CO2 equivalent
+  - name: projections_of_emissions_nepn_additional_nuclear
+    title: Projections of emissions based on NEPN with additional measures, nuclear scenario
+    profile: tabular-data-resource
+    path: data/emissions.projections.additional_nuclear.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Projections of emissions - NEPN
+        path: sources/energetska_bilanca_2050_nepn_dps.xlsx
+        code: sources/nepn_projections_xlsx2csv.py
+        # url:  https://www.energetika-portal.si/fileadmin/dokumenti/publikacije/nepn/dokumenti/energetska_bilanca_2050_nepn_dps.xlsx
+        # author:        Vlada RS, IJS CEU
+        # date_accessed: 2021-07-18
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total_source
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: energy_industries
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: manufacturing_construction_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: transport
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: industrial_processes
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: residential_commercial_agricultural_forestry_fishing_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: agriculture
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: waste
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: others
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: lulucf
+          type: number
+          unit: kilotonnes CO2 equivalent
+  - name: projections_of_emissions_nepn_additional_synthetic
+    title: Projections of emissions based on NEPN with additional measures, climate neutral synthetic gas scenario
+    profile: tabular-data-resource
+    path: data/emissions.projections.additional_synthetic.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Projections of emissions - NEPN
+        path: sources/energetska_bilanca_2050_nepn_dps.xlsx
+        code: sources/nepn_projections_xlsx2csv.py
+        # url:  https://www.energetika-portal.si/fileadmin/dokumenti/publikacije/nepn/dokumenti/energetska_bilanca_2050_nepn_dps.xlsx
+        # author:        Vlada RS, IJS CEU
+        # date_accessed: 2021-07-18
+    schema:
+      fields:
+        - name: year
+          type: year
+        - name: total_source
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: energy_industries
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: manufacturing_construction_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: transport
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: industrial_processes
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: residential_commercial_agricultural_forestry_fishing_fuels
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: agriculture
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: waste
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: others
+          type: number
+          unit: kilotonnes CO2 equivalent
+        - name: lulucf
+          type: number
+          unit: kilotonnes CO2 equivalent
