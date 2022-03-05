@@ -48,6 +48,6 @@ def zip(c, packageName):
         for file in files:
             fileName = Path(root, file)
             if file not in excludedFiles:
-                archiveName = Path(*(fileName.parts[1:]))
+                archiveName = Path(*(fileName.parts[2:]))
                 zip.write(fileName, archiveName)
     zip.close()
