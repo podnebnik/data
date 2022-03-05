@@ -20,7 +20,7 @@ def package_dataset(dataset_name):
         Path("build/{}".format(dataset_name)).mkdir(parents=True, exist_ok=True)
         datapackage_to_datasette(
             'build/{}/data.db'.format(dataset_name),
-            'dataset/{}/datapackage.yaml'.format(dataset_name),
+            'datasets/{}/datapackage.yaml'.format(dataset_name),
             'build/{}/metadata.json'.format(dataset_name),
             write_mode='replace'
         )
@@ -30,7 +30,7 @@ def package_dataset(dataset_name):
 @task
 def package(c, dataset_name=None):
     if dataset_name is None:
-        datasets = os.listdir("dataset")
+        datasets = os.listdir("datasets")
     else:
         datasets = [dataset_name]
     
