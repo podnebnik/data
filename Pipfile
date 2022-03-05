@@ -6,10 +6,14 @@ name = "pypi"
 [packages]
 frictionless = "*"
 invoke = "*"
+simpleeval = "*"
+datapackage-to-datasette = "*"
+datasette = "*"
 
 [dev-packages]
 flake8 = "*"
 autopep8 = "*"
+ipython = "*"
 
 [requires]
 python_version = "3"
