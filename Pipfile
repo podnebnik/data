@@ -7,8 +7,8 @@ name = "pypi"
 frictionless = "*"
 invoke = "*"
 simpleeval = "*"
-datapackage-to-datasette = "*"
 datasette = "*"
+deepmerge = "*"
 
 [dev-packages]
 flake8 = "*"
