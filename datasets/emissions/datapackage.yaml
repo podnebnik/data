@@ -3,7 +3,7 @@ name: emissions
 title: Historical and projected CO2 equiv. emissions
 contributors:
   - title: Žiga Zaplotnik
-    role": author
+    role: author
     path: https://twitter.com/zaplotnikziga
 description: Annual C02 equivalent emissions from 1986 to most recent year available as well as projections until...
 keywords: [emissions, historical, projections]

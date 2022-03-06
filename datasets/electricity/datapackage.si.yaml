@@ -2,7 +2,7 @@ profile: data-package
 name: electricity
 title: Zgodovinski in predvideni podatki o slovenski energetiki
 contributors:
-  - Jan Bohinec
+  - title: Jan Bohinec
 description: Letni podatki o instaliranih kapacitetah po gorivih, popis posameznih proizvodnjih enot nad 10 MW moči in izpusti CO2 emisij po virih proizvodnje elektrike ter toplote 1990-2040
 keywords: [emisije, ogljik, elektrika, kapacitete, zelena energija]
 geography: Slovenia
@@ -12,10 +12,10 @@ licenses:
     title: Open Data Commons Open Database License 1.0
     path: http://www.opendefinition.org/licenses/odc-odbl
 resources:
-  - name: electricity.additions_retirements- 
+  - name: electricity.additions_retirements
     title: Zgodovinske in predvidene nove ter upokojene instalirane proizvodnje enote po viru goriva
     profile: tabular-data-resource
-    path: data\electricity.additions_retirements.csv
+    path: data/electricity.additions_retirements.csv
     scheme: file
     format: csv
     encoding: utf-8
@@ -25,8 +25,8 @@ resources:
         code: sources/electricity_source_to_csv.py
         # path:          # path to file in repo if exists
         # url:           # url to original data source if possible
-        author: Podnebnik        # organization or person who is the owner of the data
-        date_accessed: 29.4.2021 # date when data was extracted
+        author: Podnebnik
+        date_accessed: 2021-04-29
     schema:
       fields:
         - name: year
@@ -63,7 +63,7 @@ resources:
   - name: electricity.emissions
     title: Letne emisije CO2 po virih proizvodnje elektrike in toplote 
     profile: tabular-data-resource
-    path: data\electricity.emissions.csv
+    path: data/electricity.emissions.csv
     scheme: file
     format: csv
     encoding: utf-8
@@ -72,9 +72,9 @@ resources:
       - title: Viri CO2 emisije
         code: sources/electricity_source_to_csv.py
         # path:          # path to file in repo if exists
-        url: https://www.gov.si/teme/trgovanje-s-pravicami-do-emisije/ # url to original data source if possible
-        author: ARSO, MINISTRSTVO ZA OKOLJE IN PROSTOR, DIREKTORAT ZA OKOLJE # owner of the data
-        date_accessed: 29.4.2021 # date when data was extracted
+        url: https://www.gov.si/teme/trgovanje-s-pravicami-do-emisije/
+        author: ARSO, MINISTRSTVO ZA OKOLJE IN PROSTOR, DIREKTORAT ZA OKOLJE
+        date_accessed: 2021-04-29
     schema:
       fields:
         - name: year
@@ -143,7 +143,7 @@ resources:
   - name: electricity.installed_capacities
     title: Inštalirane proizvodnje kapacitete elektrike glede na gorivo
     profile: tabular-data-resource
-    path: data\electricity.installed_capacities.csv
+    path: data/electricity.installed_capacities.csv
     scheme: file
     format: csv
     encoding: utf-8
@@ -153,8 +153,8 @@ resources:
         code: sources/electricity_source_to_csv.py
         # path:          # path to file in repo if exists
         # url:           # url to original data source if possible
-        author: Podnebnik        # organization or person who is the owner of the data
-        date_accessed: 29.4.2021 # date when data was extracted
+        author: Podnebnik
+        date_accessed: 2021-04-29
     schema:
       fields:
         - name: year
