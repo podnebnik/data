@@ -4,8 +4,6 @@ name: Build and deploy datasette containers
 
 on:
   push:
-    branches:
-      - develop
 
 jobs:
   build:
