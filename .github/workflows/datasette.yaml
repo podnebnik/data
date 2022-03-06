@@ -29,6 +29,13 @@ jobs:
         run: |
           pipenv install --deploy --dev
 
+      - name: Login to ghcr.io
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
       - run: |
           pipenv run invoke package
-      
+          docker push ghcr.io/podnebnik/data:latest
