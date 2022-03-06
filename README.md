@@ -4,7 +4,8 @@ This is a collection of open data sources related to the climate change. We use 
 
 Currently we provide the following data packages:
 
-- [Emissions](./emissions/)
+- [Emissions](./datasets/emissions/)
+- [Electricity](./datasets/electricity/)
 
 For details about the provided data, please consult the `datapackage.yaml` files in the individual data package folders.
 
