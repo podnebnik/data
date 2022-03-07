@@ -73,11 +73,6 @@ if __name__ == '__main__':
     data = data.drop([0])
     
     
-    data = data[['Year', 'Total', 'Energetika Ljubljana', 'Energetika Maribor', 'TEB',
-        'TEŠ', 'TETOL', 'TET', 'Energetika Celje',
-        'Enos', 'M-Energetika', 'Petrol Energetika', 'Other',
-        'Total all individual sources', 'Residual', '2030 Target']]
-    
     data = data.rename(columns = {
         'Year': 'year',
         'Total': 'total', 
@@ -96,7 +91,13 @@ if __name__ == '__main__':
         'Residual': 'total__residual', 
         '2030 Target': 'target_2030'
         })
- 
+
+    data = data[[
+        'year', 'total', 'total__individual', 'total__residual', 'target_2030',
+        'tes', 'tetol', 'teb', 'tet',
+        'energetika_ljubljana', 'energetika_maribor', 'energetika_celje',
+        'enos_energetika', 'petrol_energetika', 'm_energetika', 'other']]
+    
     data.to_csv("../data/electricity.emissions.csv",index=False) 
     
     

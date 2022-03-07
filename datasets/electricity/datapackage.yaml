@@ -84,50 +84,6 @@ resources:
           type: number
           title: Total
           unit: Tonnes CO2 equivalent
-        - name: energetika_ljubljana
-          type: number
-          title: Energetika Ljubljana
-          unit: Tonnes CO2 equivalent
-        - name: energetika_maribor
-          type: number
-          title: Energetika Maribor
-          unit: Tonnes CO2 equivalent
-        - name: teb
-          type: number
-          title: Termoelektrarna Brestanica
-          unit: Tonnes CO2 equivalent
-        - name: tes
-          type: number
-          title: Termoelektrarna Šoštanj
-          unit: Tonnes CO2 equivalent
-        - name: tetol
-          type: number
-          title: Termoelektrarna Toplarna Ljubljana
-          unit: Tonnes CO2 equivalent
-        - name: tet
-          type: number
-          title: Termoelektrarna Trbovlje
-          unit: Tonnes CO2 equivalent
-        - name: energetika_celje
-          type: number
-          title: Energetika Celje
-          unit: Tonnes CO2 equivalent
-        - name: enos_energetika
-          type: number
-          title: ENOS Energetika
-          unit: Tonnes CO2 equivalent
-        - name: m_energetika
-          type: number
-          title: M Energetika
-          unit: Tonnes CO2 equivalent
-        - name: petrol_energetika
-          type: number
-          title: Petrol Energetika
-          unit: Tonnes CO2 equivalent
-        - name: other
-          type: number
-          title: Other
-          unit: Tonnes CO2 equivalent
         - name: total__individual
           type: number
           title: Total from Individual Sources
@@ -139,6 +95,50 @@ resources:
         - name: target_2030
           type: number
           title: Target 2030
+          unit: Tonnes CO2 equivalent
+        - name: tes
+          type: number
+          title: Termoelektrarna Šoštanj
+          unit: Tonnes CO2 equivalent
+        - name: tetol
+          type: number
+          title: Termoelektrarna Toplarna Ljubljana
+          unit: Tonnes CO2 equivalent
+        - name: teb
+          type: number
+          title: Termoelektrarna Brestanica
+          unit: Tonnes CO2 equivalent
+        - name: tet
+          type: number
+          title: Termoelektrarna Trbovlje
+          unit: Tonnes CO2 equivalent
+        - name: energetika_ljubljana
+          type: number
+          title: Energetika Ljubljana
+          unit: Tonnes CO2 equivalent
+        - name: energetika_maribor
+          type: number
+          title: Energetika Maribor
+          unit: Tonnes CO2 equivalent
+        - name: energetika_celje
+          type: number
+          title: Energetika Celje
+          unit: Tonnes CO2 equivalent
+        - name: enos_energetika
+          type: number
+          title: ENOS Energetika
+          unit: Tonnes CO2 equivalent
+        - name: petrol_energetika
+          type: number
+          title: Petrol Energetika
+          unit: Tonnes CO2 equivalent
+        - name: m_energetika
+          type: number
+          title: M Energetika
+          unit: Tonnes CO2 equivalent
+        - name: other
+          type: number
+          title: Other
           unit: Tonnes CO2 equivalent
   - name: electricity.installed_capacities
     title: Electricity production installed capacities by main fuel groups
