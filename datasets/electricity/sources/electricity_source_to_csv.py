@@ -76,24 +76,22 @@ if __name__ == '__main__':
     data = data.rename(columns = {
         'Year': 'year',
         'Total': 'total', 
-        'Energetika Ljubljana': 'energetika_ljubljana', 
-        'Energetika Maribor': 'energetika_maribor', 
-        'TEB': 'teb',
+        '2030 Target': 'target_2030',
         'TEŠ': 'tes', 
         'TETOL': 'tetol', 
+        'TEB': 'teb',
         'TET': 'tet', 
+        'Energetika Ljubljana': 'energetika_ljubljana', 
+        'Energetika Maribor': 'energetika_maribor', 
         'Energetika Celje': 'energetika_celje',
         'Enos': 'enos_energetika', 
-        'M-Energetika': 'm_energetika', 
         'Petrol Energetika': 'petrol_energetika', 
-        'Other': 'other',
-        'Total all individual sources': 'total__individual', 
-        'Residual': 'total__residual', 
-        '2030 Target': 'target_2030'
+        'M-Energetika': 'm_energetika', 
+        'Residual': 'other' 
         })
 
     data = data[[
-        'year', 'total', 'total__individual', 'total__residual', 'target_2030',
+        'year', 'total', 'target_2030',
         'tes', 'tetol', 'teb', 'tet',
         'energetika_ljubljana', 'energetika_maribor', 'energetika_celje',
         'enos_energetika', 'petrol_energetika', 'm_energetika', 'other']]

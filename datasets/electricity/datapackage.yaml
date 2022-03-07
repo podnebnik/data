@@ -84,14 +84,6 @@ resources:
           type: number
           title: Total
           unit: Tonnes CO2 equivalent
-        - name: total__individual
-          type: number
-          title: Total from Individual Sources
-          unit: Tonnes CO2 equivalent
-        - name: total__residual
-          type: number
-          title: Total Residual
-          unit: Tonnes CO2 equivalent
         - name: target_2030
           type: number
           title: Target 2030

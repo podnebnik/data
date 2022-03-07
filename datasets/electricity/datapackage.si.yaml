@@ -84,14 +84,6 @@ resources:
           type: number
           title: Skupaj
           unit: Tonnes CO2 equivalent
-        - name: total__individual
-          type: number
-          title: Skupaj po posameznih virih
-          unit: Tonnes CO2 equivalent
-        - name: total__residual
-          type: number
-          title: Skupaj preostanek
-          unit: Tonnes CO2 equivalent
         - name: target_2030
           type: number
           title: Cilj 2030
