@@ -72,7 +72,7 @@ resources:
       - title: Viri CO2 emisije
         code: sources/electricity_source_to_csv.py
         # path:          # path to file in repo if exists
-        url: https://www.gov.si/teme/trgovanje-s-pravicami-do-emisije/
+        url: https://www.gov.si/teme/trgovanje-s-pravicami-do-emisije
         author: ARSO, MINISTRSTVO ZA OKOLJE IN PROSTOR, DIREKTORAT ZA OKOLJE
         date_accessed: 2021-04-29
     schema:
@@ -96,7 +96,7 @@ resources:
           type: number
           title: Termoelektrarna Brestanica
           unit: Tonnes CO2 equivalent
-        - name: test
+        - name: tes
           type: number
           title: Termoelektrarna Šoštanj
           unit: Tonnes CO2 equivalent
@@ -112,9 +112,9 @@ resources:
           type: number
           title: Energetika Celje
           unit: Tonnes CO2 equivalent
-        - name: enos
+        - name: enos_energetika
           type: number
-          title: Enos
+          title: ENOS Energetika
           unit: Tonnes CO2 equivalent
         - name: m_energetika
           type: number
@@ -128,13 +128,13 @@ resources:
           type: number
           title: Ostalo
           unit: Tonnes CO2 equivalent
-        - name: total-individual
+        - name: total__individual
           type: number
           title: Skupaj po posameznih virih
           unit: Tonnes CO2 equivalent
-        - name: residual
+        - name: total__residual
           type: number
-          title: Preostanek
+          title: Skupaj preostanek
           unit: Tonnes CO2 equivalent
         - name: target_2030
           type: number
