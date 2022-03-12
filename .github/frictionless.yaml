@@ -1,0 +1,6 @@
+main:
+  tasks:
+    - source: datasets/electricity/datapackage.yaml
+      type: package
+    - source: datasets/emissions/datapackage.yaml
+      type: package
