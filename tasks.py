@@ -12,12 +12,12 @@ import json
 from pprint import pp
 from lib.i18n import generate_catalog
 from babel.messages.pofile import write_po
-from babel._compat import BytesIO
-
+import frictionless
+import subprocess
 
 def build_container():
     """ Build docker container from datasette dataset """
-    import subprocess
+    
     process = subprocess.Popen(['datasette', 'package', *glob.glob('build/*.db'),
                                '-m', 'build/metadata.json', '-t', 'ghcr.io/podnebnik/data:latest'])
     process.communicate()
