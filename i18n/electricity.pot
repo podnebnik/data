@@ -1,0 +1,246 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-03-12 23:12+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+# Original string:
+# Historical and projected Slovenian Electricity Data
+msgid "electricity.title"
+msgstr ""
+
+# Original string:
+# Annual Electricity data, installed capacities per fuel type, individual
+# power plants and electricity CO2 emissions, 1990-2040
+msgid "electricity.description"
+msgstr ""
+
+# Original string:
+# Year
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.year"
+msgstr ""
+
+# Original string:
+# Wind
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.additions_wind"
+msgstr ""
+
+# Original string:
+# Solar
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.additions_solar"
+msgstr ""
+
+# Original string:
+# Hydro
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.additions_hydro"
+msgstr ""
+
+# Original string:
+# Pump Hydro
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.additions_pump_hydro"
+msgstr ""
+
+# Original string:
+# Nuclear
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.additions_nuclear"
+msgstr ""
+
+# Original string:
+# Lignite
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.additions_thermal"
+msgstr ""
+
+# Original string:
+# Lignite Retirements
+#: data/electricity.additions_retirements.csv
+msgid "electricity.electricity.additions_retirements.retirements_thermal"
+msgstr ""
+
+# Original string:
+# Year
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.year"
+msgstr ""
+
+# Original string:
+# Total
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.total"
+msgstr ""
+
+# Original string:
+# Target 2030
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.target_2030"
+msgstr ""
+
+# Original string:
+# Termoelektrarna Šoštanj
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.tes"
+msgstr ""
+
+# Original string:
+# Termoelektrarna Toplarna Ljubljana
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.tetol"
+msgstr ""
+
+# Original string:
+# Termoelektrarna Brestanica
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.teb"
+msgstr ""
+
+# Original string:
+# Termoelektrarna Trbovlje
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.tet"
+msgstr ""
+
+# Original string:
+# Energetika Ljubljana
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.energetika_ljubljana"
+msgstr ""
+
+# Original string:
+# Energetika Maribor
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.energetika_maribor"
+msgstr ""
+
+# Original string:
+# Energetika Celje
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.energetika_celje"
+msgstr ""
+
+# Original string:
+# ENOS Energetika
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.enos_energetika"
+msgstr ""
+
+# Original string:
+# Petrol Energetika
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.petrol_energetika"
+msgstr ""
+
+# Original string:
+# M Energetika
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.m_energetika"
+msgstr ""
+
+# Original string:
+# Other
+#: data/electricity.emissions.csv
+msgid "electricity.electricity.emissions.other"
+msgstr ""
+
+# Original string:
+# Year
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.year"
+msgstr ""
+
+# Original string:
+# Total Installed Capacities
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.total"
+msgstr ""
+
+# Original string:
+# Thermal
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.thermal"
+msgstr ""
+
+# Original string:
+# Hydro
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.hydro"
+msgstr ""
+
+# Original string:
+# Accumulation Hydro
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.mixed_hydro"
+msgstr ""
+
+# Original string:
+# Pumped Hydro
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.pump_hydro"
+msgstr ""
+
+# Original string:
+# Geothermal
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.geothermal"
+msgstr ""
+
+# Original string:
+# Wind
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.wind"
+msgstr ""
+
+# Original string:
+# Solar Thermal
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.solar_thermal"
+msgstr ""
+
+# Original string:
+# Solar
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.solar"
+msgstr ""
+
+# Original string:
+# Wave
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.wave"
+msgstr ""
+
+# Original string:
+# Nuclear
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.nuclear"
+msgstr ""
+
+# Original string:
+# Other
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.other"
+msgstr ""
+
+# Original string:
+# Consumption
+#: data/electricity.installed_capacities.csv
+msgid "electricity.electricity.installed_capacities.consumption"
+msgstr ""
+

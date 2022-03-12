@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-from invoke import task
+from invoke import task, Context
 from pathlib import Path
 import zipfile
 import subprocess
@@ -10,6 +10,9 @@ import glob
 from deepmerge import always_merger
 import json
 from pprint import pp
+from lib.i18n import generate_catalog
+from babel.messages.pofile import write_po
+from babel._compat import BytesIO
 
 
 def build_container():
@@ -20,7 +23,7 @@ def build_container():
     process.communicate()
 
 
-def datapackage_descriptor_to_metadata_object(descriptor):
+def datapackage_descriptor_to_metadata_object(descriptor: object) -> dict:
     obj = {}
     if descriptor.title:
         obj["title"] = descriptor.title
@@ -47,7 +50,8 @@ def datapackage_descriptor_to_metadata_object(descriptor):
     return obj
 
 
-def extract_metadata(dp, dbname):
+def extract_metadata(dp: Package, dbname: str) -> dict:
+    """ Extract metadata from frictionless data package """
     metadata = {"databases": {
         dbname: datapackage_descriptor_to_metadata_object(dp)}}
 
@@ -63,30 +67,44 @@ def extract_metadata(dp, dbname):
 
     return metadata
 
-
-def convert(datapackage_path, dbname):
-    """ Convert frictionless data package to sqlite database """
-
-    dp = Package(datapackage_path)
-    dp.to_sql(f"sqlite:///build/{dbname}.db")
-    return extract_metadata(dp, dbname)
-
-
 def discover_datapackages():
     return glob.iglob('datasets/*/datapackage.yaml')
 
 
 @task
+def extract_translations(c):
+    Path("i18n/").mkdir(parents=True, exist_ok=True)
+    for datapackage_path in discover_datapackages():
+        pkg = Package(datapackage_path)
+        dbname = os.path.basename(os.path.dirname(datapackage_path))
+        # extract catalog for translation
+        catalog = generate_catalog(pkg)
+
+        with open(f"i18n/{dbname}.pot", 'wb') as f:
+            write_po(f, catalog)
+
+@task
 def package(c):
     Path("build/").mkdir(parents=True, exist_ok=True)
-    metadata = {}
+    metadata = {
+        "title": "Podnebnik",
+        "description": "TODO",
+    }
+
     for datapackage_path in discover_datapackages():
+        pkg = Package(datapackage_path)
         dbname = os.path.basename(os.path.dirname(datapackage_path))
-        metadata = always_merger.merge(
-            metadata, convert(datapackage_path, dbname))
+        # convert Package to sqlite db
+        pkg.to_sql(f"sqlite:///build/{dbname}.db")
+        # extract metadata from Package
+        pkg_meta = extract_metadata(pkg, dbname)
+        # merge metadata
+        metadata = always_merger.merge(metadata, pkg_meta)
 
     with open('build/metadata.json', 'w') as f:
         json.dump(metadata, f, indent=4, sort_keys=True)
+
+
     build_container()
 
 
