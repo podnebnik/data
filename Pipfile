@@ -7,7 +7,7 @@ name = "pypi"
 package = "invoke package"
 
 [packages]
-frictionless = {extras = ["sql"], version = "*"}
+frictionless = {extras = ["excel"], version = "*"}
 invoke = "*"
 simpleeval = "*"
 datasette = "*"

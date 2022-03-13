@@ -10,10 +10,11 @@ import glob
 from deepmerge import always_merger
 import json
 from pprint import pp
-from lib.i18n import generate_catalog
+from lib.i18n import collect_messages
 from babel.messages.pofile import write_po
 import frictionless
 import subprocess
+from babel.messages.catalog import Catalog
 
 def build_container():
     """ Build docker container from datasette dataset """
@@ -74,14 +75,15 @@ def discover_datapackages():
 @task
 def extract_translations(c):
     Path("i18n/").mkdir(parents=True, exist_ok=True)
+    catalog = Catalog()
     for datapackage_path in discover_datapackages():
         pkg = Package(datapackage_path)
         dbname = os.path.basename(os.path.dirname(datapackage_path))
         # extract catalog for translation
-        catalog = generate_catalog(pkg)
+        collect_messages(catalog, pkg)
 
-        with open(f"i18n/{dbname}.pot", 'wb') as f:
-            write_po(f, catalog)
+    with open(f"i18n/messages.pot", 'wb') as f:
+        write_po(f, catalog)
 
 @task
 def package(c):
