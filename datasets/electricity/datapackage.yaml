@@ -26,7 +26,7 @@ resources:
         # path:          # path to file in repo if exists
         # url:           # url to original data source if possible
         author: Podnebnik
-        date_accessed: 2021-04-29
+        date_accessed: "2021-04-29"
     schema:
       fields:
         - name: year
@@ -74,7 +74,7 @@ resources:
         # path:          # path to file in repo if exists
         url: https://www.gov.si/teme/trgovanje-s-pravicami-do-emisije
         author: ARSO, MINISTRSTVO ZA OKOLJE IN PROSTOR, DIREKTORAT ZA OKOLJE
-        date_accessed: 2021-04-29
+        date_accessed: "2021-04-29"
     schema:
       fields:
         - name: year
@@ -146,7 +146,7 @@ resources:
         # path:          # path to file in repo if exists
         # url:           # url to original data source if possible
         author: Podnebnik
-        date_accessed: 2021-04-29
+        date_accessed: "2021-04-29"
     schema:
       fields:
         - name: year
