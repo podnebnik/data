@@ -192,3 +192,12 @@ For example, to validate the data package, run:
 ```bash
 pipenv run frictionless validate emissions/datapackage.yaml
 ```
+
+Run datasette
+```
+docker run --rm -p 8001:8001 ghcr.io/podnebnik/data:latest
+
+or locally
+
+datasette serve build/
+```
