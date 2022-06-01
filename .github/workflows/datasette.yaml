@@ -37,5 +37,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
-          pipenv run invoke package
+          pipenv run invoke package build
           docker push ghcr.io/podnebnik/data:latest

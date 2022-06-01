@@ -42,10 +42,10 @@ def datapackage_descriptor_to_metadata_object(descriptor: object) -> dict:
                 "allows one license to be specified. Only the first will be used."
             )
     if getattr(descriptor, "schema", None):
-        obj["columns"] = {field.name: field.title for field in filter(
-            lambda f: getattr(f, "title", None), descriptor.schema.fields)}
-        obj["units"] = {field.name: field.unit for field in filter(
-            lambda f: hasattr(f, "unit"), descriptor.schema.fields)}
+        obj["columns"] = {field.name: field.title or field.name for field in descriptor.schema.fields}
+        # commented out, because units must be somehow registred first, othwreiwse it does not work
+        # obj["units"] = {field.name: field.get('unit') for field in filter(
+        #     lambda f: f.get('unit'), descriptor.schema.fields)}
     if getattr(descriptor, "homepage", None):
         obj["source_url"] = descriptor.homepage
     return obj
@@ -107,6 +107,8 @@ def package(c):
         json.dump(metadata, f, indent=4, sort_keys=True)
 
 
+@task
+def build(c):
     build_container()
 
 
