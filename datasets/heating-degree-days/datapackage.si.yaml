@@ -1,0 +1,118 @@
+profile: data-package
+name: heating-degree-days
+title: Temperaturni primanjkljaji in kurilne sezone za Slovenijo
+contributors:
+  - title: Gasper Zejn
+description: Temperaturni primanjkljaji, 1961-2022
+keywords: [ogrevanje, temperaturni primanjkljaj, hlajenje, temperaturni presežek, energija, toplota, kurilna sezona]
+geography: Slovenia
+schedule: annual
+licenses:
+  - name: ODbL-1.0
+    title: Open Data Commons Open Database License 1.0
+    path: http://www.opendefinition.org/licenses/odc-odbl
+resources:
+  - name: heating.degree_days
+    title: Temperaturni primanjkljaji in presežki, začetek in konec kurilne sezone
+    profile: tabular-data-resource
+    path: data/heating.degree_days.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Temperaturni primanjkljaji in presežki
+        code: sources/heating_degree_day.py
+        # path:          # path to file in repo if exists
+        url: http://meteo.arso.gov.si/uploads/probase/www/climate/table/sl/by_variable/cooling-heating-degree-days.txt
+        author: ARSO # owner of the data
+        date_accessed: 2022-03-06
+    schema:
+      fields:
+        - name: st_postaje
+          type: number
+          title: Številka postaje
+        - name: tip_postaje
+          type: string
+          title: Tip postaje
+        - name: leto
+          type: year
+          title: Leto
+        - name: tprim12
+          type: number
+          title: Temperaturni primanjkljaj, osnova 12°C
+          unit: Kelvin days
+        - name: tprim15
+          type: number
+          title: Temperaturni primanjkljaj, osnova 15°C
+          unit: Kelvin days
+        - name: zacetek_ks
+          type: date
+          title: Začetek kurilne sezone
+        - name: konec_ks
+          type: date
+          title: Konec kurilne sezone
+        - name: traj_ks
+          type: number
+          title: Trajanje kurilne sezone
+          unit: days
+        - name: tpres18
+          type: number
+          title: Temperaturni presežek, osnova 18°C
+          unit: Kelvin days
+        - name: tpres21
+          type: number
+          title: Temperaturni presežek, osnova 21°C
+          unit: Kelvin days
+        - name: tpres23
+          type: number
+          title: Temperaturni presežek, osnova 23°C
+          unit: Kelvin days
+        - name: cdd24
+          type: number
+          title: Temperaturni presežek, osnova 24°C
+          unit: Kelvin days
+  - name: heating.degree_day_stations
+    title: Temperaturni primanjkljaji, opazovalne postaje
+    profile: tabular-data-resource
+    path: data/heating.degree_day_stations.csv
+    scheme: file
+    format: csv
+    encoding: utf-8
+    hashing: md5
+    sources:
+      - title: Temperaturni primanjkljaji, opazovalne postaje
+        code: sources/heating_degree_day.py
+        # path:          # path to file in repo if exists
+        url: http://meteo.arso.gov.si/uploads/probase/www/climate/table/sl/by_variable/cooling-heating-degree-days.txt
+        author: ARSO # owner of the data
+        date_accessed: 2022-03-06
+    schema:
+      fields:
+        - name: st_postaje
+          type: number
+          title: Številka postaje
+        - name: tip_postaje
+          type: string
+          title: Tip postaje
+        - name: ime_postaje
+          type: string
+          title: Ime postaje
+        - name: nadm_vis
+          type: number
+          title: Nadmorska višina
+          unit: metres above sea level
+        - name: lat
+          type: number
+          title: Geografska širina
+          unit: degree
+        - name: lon
+          type: number
+          title: Geografska dolžina
+          unit: degree
+        - name: datum_zacetka
+          type: date
+          title: Datum začetka delovanja opazovalne postaje
+        - name: datum_konca
+          type: date
+          title: Datum konca delovanja opazovalne postaje
