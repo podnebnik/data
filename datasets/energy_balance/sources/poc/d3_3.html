@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>SANKEY Experiment</title>
+<style>
+
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+.link:hover {
+  stroke-opacity: .5;
+}
+
+</style>
+<body>
+
+<div id="chart"></div>
+
+
+<script src="d3.v6.min.js"></script>
+<script src="d3-sankey.min.js"></script>
+<script>
+    
+var units = "Widgets";
+
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+    width = 954 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+
+function load_data(cb) {
+    d3.csv("energetska_bilanca_sankey_2.csv")
+        .then(function(data) {
+
+        console.log("1000");
+
+        var daa = data;
+        console.log(data);
+        var nodes0 = [];
+        var links = [];
+
+        for (var i = 0; i < data.length; i++) {
+            var di = data[i];
+            links.push({
+                source: di.source,
+                target: di.target,
+                value: di.value * 41.868,
+                color: di.color
+            });
+            if (nodes0.indexOf(di.source) < 0) {
+                nodes0.push(di.source);
+            }
+            if (nodes0.indexOf(di.target) < 0) {
+                nodes0.push(di.target);
+            }
+        }
+
+        console.log("1000-0");
+        console.log(nodes0);
+
+        console.log("1001");
+
+        var nodes = [];
+        for (var i = 0; i < nodes0.length; i++) {
+            nodes.push({name: nodes0[i], category: nodes0[i]});
+        }
+
+        console.log("1002");
+        console.log(nodes);
+        console.log(links);
+
+        return cb({nodes: nodes, links: links, units: "GWh"});
+    });
+
+}
+
+
+
+// data = {
+//   const links = await FileAttachment("energy.csv").csv({typed: true});
+//   const nodes = Array.from(new Set(links.flatMap(l => [l.source, l.target])), name => ({name, category: name.replace(/ .*/, "")}));
+//   return {nodes, links, units: "TWh"};
+// }
+
+
+function colorz(d) {
+    const color = d3.scaleOrdinal(d3.schemeCategory10);
+    return color(d.category === undefined ? d.name : d.category);
+}
+
+function formatz(d) {
+    const format = d3.format(",.0f");
+    // if (data.units) {
+    if (0) {
+        return `${format(d)} ${data.units}`;
+    } else {
+        return format(d);
+    }
+}
+
+var energy = {"nodes":[{"name":"Agricultural 'waste'"},{"name":"Bio-conversion"},{"name":"Liquid"},{"name":"Losses"},{"name":"Solid"},{"name":"Gas"},{"name":"Biofuel imports"},{"name":"Biomass imports"},{"name":"Coal imports"},{"name":"Coal"},{"name":"Coal reserves"},{"name":"District heating"},{"name":"Industry"},{"name":"Heating and cooling - commercial"},{"name":"Heating and cooling - homes"},{"name":"Electricity grid"},{"name":"Over generation / exports"},{"name":"H2 conversion"},{"name":"Road transport"},{"name":"Agriculture"},{"name":"Rail transport"},{"name":"Lighting & appliances - commercial"},{"name":"Lighting & appliances - homes"},{"name":"Gas imports"},{"name":"Ngas"},{"name":"Gas reserves"},{"name":"Thermal generation"},{"name":"Geothermal"},{"name":"H2"},{"name":"Hydro"},{"name":"International shipping"},{"name":"Domestic aviation"},{"name":"International aviation"},{"name":"National navigation"},{"name":"Marine algae"},{"name":"Nuclear"},{"name":"Oil imports"},{"name":"Oil"},{"name":"Oil reserves"},{"name":"Other waste"},{"name":"Pumped heat"},{"name":"Solar PV"},{"name":"Solar Thermal"},{"name":"Solar"},{"name":"Tidal"},{"name":"UK land based bioenergy"},{"name":"Wave"},{"name":"Wind"}],"links":[{"source":0,"target":1,"value":124.729},{"source":1,"target":2,"value":0.597},{"source":1,"target":3,"value":26.862},{"source":1,"target":4,"value":280.322},{"source":1,"target":5,"value":81.144},{"source":6,"target":2,"value":35},{"source":7,"target":4,"value":35},{"source":8,"target":9,"value":11.606},{"source":10,"target":9,"value":63.965},{"source":9,"target":4,"value":75.571},{"source":11,"target":12,"value":10.639},{"source":11,"target":13,"value":22.505},{"source":11,"target":14,"value":46.184},{"source":15,"target":16,"value":104.453},{"source":15,"target":14,"value":113.726},{"source":15,"target":17,"value":27.14},{"source":15,"target":12,"value":342.165},{"source":15,"target":18,"value":37.797},{"source":15,"target":19,"value":4.412},{"source":15,"target":13,"value":40.858},{"source":15,"target":3,"value":56.691},{"source":15,"target":20,"value":7.863},{"source":15,"target":21,"value":90.008},{"source":15,"target":22,"value":93.494},{"source":23,"target":24,"value":40.719},{"source":25,"target":24,"value":82.233},{"source":5,"target":13,"value":0.129},{"source":5,"target":3,"value":1.401},{"source":5,"target":26,"value":151.891},{"source":5,"target":19,"value":2.096},{"source":5,"target":12,"value":48.58},{"source":27,"target":15,"value":7.013},{"source":17,"target":28,"value":20.897},{"source":17,"target":3,"value":6.242},{"source":28,"target":18,"value":20.897},{"source":29,"target":15,"value":6.995},{"source":2,"target":12,"value":121.066},{"source":2,"target":30,"value":128.69},{"source":2,"target":18,"value":135.835},{"source":2,"target":31,"value":14.458},{"source":2,"target":32,"value":206.267},{"source":2,"target":19,"value":3.64},{"source":2,"target":33,"value":33.218},{"source":2,"target":20,"value":4.413},{"source":34,"target":1,"value":4.375},{"source":24,"target":5,"value":122.952},{"source":35,"target":26,"value":839.978},{"source":36,"target":37,"value":504.287},{"source":38,"target":37,"value":107.703},{"source":37,"target":2,"value":611.99},{"source":39,"target":4,"value":56.587},{"source":39,"target":1,"value":77.81},{"source":40,"target":14,"value":193.026},{"source":40,"target":13,"value":70.672},{"source":41,"target":15,"value":59.901},{"source":42,"target":14,"value":19.263},{"source":43,"target":42,"value":19.263},{"source":43,"target":41,"value":59.901},{"source":4,"target":19,"value":0.882},{"source":4,"target":26,"value":400.12},{"source":4,"target":12,"value":46.477},{"source":26,"target":15,"value":525.531},{"source":26,"target":3,"value":787.129},{"source":26,"target":11,"value":79.329},{"source":44,"target":15,"value":9.452},{"source":45,"target":1,"value":182.01},{"source":46,"target":15,"value":19.013},{"source":47,"target":15,"value":289.366}]};
+
+
+
+function make_chart(data) {
+    // edgeColor = input output path none
+    var edgeColor = "data";
+
+    var svg = d3
+        .select("#chart")
+        .append("svg")
+        .attr("viewBox", [0, 0, width, height]);
+
+    console.log("0001");
+    console.log(data);
+
+    var sankey = d3.sankey()
+            .nodeId(d => d.name)
+            .nodeAlign(d3.sankeyJustify)
+            .nodeWidth(15)
+            .nodePadding(10)
+            .extent([[1, 5], [width - 1, height - 5]]);
+
+    console.log("0001-1");
+    var ss = sankey({nodes: data.nodes, links: data.links});
+
+    console.log("0002");
+    console.log(ss);
+
+    console.log(ss.links);
+    
+    svg.append("g")
+        .attr("stroke", "#000")
+        .selectAll("rect")
+        .data(ss.nodes)
+        .join("rect")
+            .attr("x", d => d.x0)
+            .attr("y", d => d.y0)
+            .attr("height", d => d.y1 - d.y0)
+            .attr("width", d => d.x1 - d.x0)
+            .attr("fill", "#aaa")
+        .append("title")
+            .text(d => `${d.name}\n${formatz(d.value)}`);
+
+    console.log("0003");
+
+    const link = svg.append("g")
+        .attr("fill", "none")
+        .attr("stroke-opacity", 0.6)
+        .selectAll("g")
+        .data(ss.links)
+        .join("g")
+        .style("mix-blend-mode", "multiply");
+
+    console.log("0004");
+
+    if (edgeColor === "path") {
+        const gradient = link.append("linearGradient")
+            .attr("id", d => (d.uid = DOM.uid("link")).id)
+            .attr("gradientUnits", "userSpaceOnUse")
+            .attr("x1", d => d.source.x1)
+            .attr("x2", d => d.target.x0);
+
+        gradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", d => colorz(d.source));
+
+        gradient.append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", d => colorz(d.target));
+    }
+
+    console.log("0005");
+
+    link.append("path")
+        .attr("d", d3.sankeyLinkHorizontal())
+        .attr("stroke", d => edgeColor === "data" ? (d.color ? d.color : "#aaa")
+            : edgeColor === "none" ? "#aaa"
+            : edgeColor === "path" ? d.uid 
+            : edgeColor === "input" ? colorz(d.source) 
+            : colorz(d.target))
+        .attr("stroke-width", d => Math.max(1, d.width));
+
+    link.append("title")
+        .text(d => `${d.source.name} → ${d.target.name}\n${formatz(d.value)}TJ`);
+
+    console.log("0006");
+
+    svg.append("g")
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .selectAll("text")
+        .data(ss.nodes)
+        .join("text")
+        .attr("x", d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6)
+        .attr("y", d => (d.y1 + d.y0) / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
+        .text(d => d.name + " " + Math.round(d.value) + "TJ");
+
+    console.log("0007");
+
+    svg.node();
+}
+
+load_data(make_chart);
+// make_chart(energy);
+
+
+
+</script>
+
+</body>
+
