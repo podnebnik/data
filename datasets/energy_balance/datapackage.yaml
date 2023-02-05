@@ -21,11 +21,11 @@ resources:
     profile: tabular-data-resource
     schema:
       fields:
-        - name: oskrba_in_poraba
+        - name: supply_and_consumption
           type: string
-        - name: leto
+        - name: year
           type: integer
-        - name: energetski_vir
+        - name: energy_source
           type: string
         - name: data
           type: number

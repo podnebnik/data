@@ -37,7 +37,13 @@ def convert_px(px_filename, csv_filename):
     # ensure stable sort for clean diffs
     f3 = f2.sort_values(by=["leto", "oskrba_in_poraba", "energetski_vir"])
 
-    f3.to_csv(csv_filename, index=False)
+    f4 = f3.rename(columns={
+        "oskrba_in_poraba": "supply_and_consumption",
+        "leto": "year",
+        "energetski_vir": "energy_source",
+    })
+
+    f4.to_csv(csv_filename, index=False)
     
     units = ", ".join(d["METADATA"].get("UNITS", []))
     
@@ -48,6 +54,6 @@ def convert_px(px_filename, csv_filename):
 
 if __name__ == "__main__":
     convert_px(
-        "2021/1817903S.px", 
+        next_to_this_file("2021/1817903S.px"),
         next_to_this_file("../data/energy_balance.csv")
     )
