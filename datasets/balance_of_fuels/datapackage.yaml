@@ -1,0 +1,33 @@
+profile: data-package
+name: balance_of_fuels
+title: Balance of solid, liquid and gas fuels, Slovenia, annually
+description: Balance of solid, liquid and gas fuels, Slovenia, annually, from 2000 to most recent year available
+keywords: [energy, energy balance, fuels]
+geography: Slovenia
+schedule: annual
+licenses:
+  - name: ODbL-1.0
+    title: Open Data Commons Open Database License 1.0
+    path: http://www.opendefinition.org/licenses/odc-odbl
+sources:
+  - title: Statistični urad Republike Slovenije / Statistical Office of the Republic of Slovenia
+    path: https://www.stat.si/
+resources:
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: energy_balance
+    path: data/balance_of_fuels.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: fuel
+          type: string
+        - name: measured
+          type: string
+        - name: year
+          type: integer
+        - name: data
+          type: number
+          unit: varies
+    scheme: file

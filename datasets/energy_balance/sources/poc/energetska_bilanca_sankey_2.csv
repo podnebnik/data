@@ -1,0 +1,47 @@
+source,target,value,color
+Transformacija,Izgube,1571.305175914345841,
+Toplota,Izgube,41.129645552689413,
+Električna energija,Izgube,199.817368873602317,
+Hidro energija,Transformacija,385.15864144454,#2772b2
+Nuklearna energija,Transformacija,1516.781833815368,#AEB800
+Trdna goriva,Transformacija,1001.400449173593,#ac8c35
+Transformacija,Električna energija,1384.312725709372,
+"Geoterm., sončna itd.",Transformacija,27.51290723225375,#f27406
+Obnovljivi viri in odpadki,Transformacija,96.39316688162796,#166a57
+Naftni proizvodi,Transformacija,5.689749928346231,#867d66
+Transformacija,Toplota,214.6538884111971,
+Zemeljski plin,Energetski sektor,1.225864144453998,#bb2f51
+Zemeljski plin,Transformacija,137.335041559186,#bb2f51
+Naftni proizvodi,Energetski sektor,0.682455574663227,#867d66
+Toplota,Energetski sektor,1.597783510079297,
+Električna energija,Energetski sektor,8.393981083404988,#8aceff
+Zemeljski plin,Drugi porabniki,13.69125824018338,#bb2f51
+Električna energija,Drugi porabniki,256.810060189166,#8aceff
+Toplota,Drugi porabniki,45.89846660934365,
+Naftni proizvodi,Drugi porabniki,76.3288657208369,#867d66
+Obnovljivi viri in odpadki,Drugi porabniki,1.310093627591478,#166a57
+"Geoterm., sončna itd.",Drugi porabniki,10.72298652909143,#f27406
+Zemeljski plin,Neenergetska raba,5.662906276870163,#bb2f51
+Naftni proizvodi,Neenergetska raba,32.55696589280596,#867d66
+Trdna goriva,Neenergetska raba,7.16773803382058,#ac8c35
+Zemeljski plin,Predelovalne dejavnosti in gradbeništvo,466.0025680710805,#bb2f51
+Obnovljivi viri in odpadki,Predelovalne dejavnosti in gradbeništvo,142.270469093341,#166a57
+Toplota,Predelovalne dejavnosti in gradbeništvo,52.13212955001433,
+Električna energija,Predelovalne dejavnosti in gradbeništvo,603.9861564918315,#8aceff
+Naftni proizvodi,Predelovalne dejavnosti in gradbeništvo,122.4692075570842,#867d66
+Trdna goriva,Predelovalne dejavnosti in gradbeništvo,39.81183061049011,#ac8c35
+Toplota,Gospodinjstva,73.89586318907041,
+Električna energija,Gospodinjstva,293.9691315563199,#8aceff
+Obnovljivi viri in odpadki,Gospodinjstva,408.4509410528328,#166a57
+Trdna goriva,Gospodinjstva,0.057323015190599,#ac8c35
+Naftni proizvodi,Gospodinjstva,125.0963456577816,#867d66
+Zemeljski plin,Gospodinjstva,105.7466552020636,#bb2f51
+"Geoterm., sončna itd.",Gospodinjstva,50.21438807681285,#f27406
+Naftni proizvodi,Promet,1820.565700773861,#867d66
+Obnovljivi viri in odpadki,Promet,95.07573144167382,#166a57
+Zemeljski plin,Promet,4.417506448839208,#bb2f51
+Trdna goriva,Promet,0.102512181140728,#ac8c35
+Električna energija,Promet,19.86380051590714,#8aceff
+Naftni proizvodi,Kmetijstvo in gozdarstvo,69.6623089232827,#867d66
+"Geoterm., sončna itd.",Kmetijstvo in gozdarstvo,2.663848285086462,#f27406
+Električna energija,Kmetijstvo in gozdarstvo,1.472226999140155,#8aceff

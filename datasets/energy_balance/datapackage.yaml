@@ -1,0 +1,33 @@
+profile: data-package
+name: energy_balance
+title: Annual energy balances in terajoules
+description: Annual energy balances in terajoules from 2000 to most recent year available
+keywords: [energy, energy balance]
+geography: Slovenia
+schedule: annual
+licenses:
+  - name: ODbL-1.0
+    title: Open Data Commons Open Database License 1.0
+    path: http://www.opendefinition.org/licenses/odc-odbl
+sources:
+  - title: Statistični urad Republike Slovenije / Statistical Office of the Republic of Slovenia
+    path: https://www.stat.si/
+resources:
+  - encoding: utf-8
+    format: csv
+    hashing: md5
+    name: energy_balance
+    path: data/energy_balance.csv
+    profile: tabular-data-resource
+    schema:
+      fields:
+        - name: supply_and_consumption
+          type: string
+        - name: year
+          type: integer
+        - name: energy_source
+          type: string
+        - name: data
+          type: number
+          unit: terajoule
+    scheme: file
