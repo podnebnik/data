@@ -1,5 +1,5 @@
 profile: data-package
-name: emissions
+name: energy_balance
 title: Annual energy balances in terajoules
 description: Annual energy balances in terajoules from 2000 to most recent year available
 keywords: [energy, energy balance]
