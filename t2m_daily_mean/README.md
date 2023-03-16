@@ -21,5 +21,3 @@ https://anaconda.org/conda-forge/dask
 
 7. Plot the data, saved in ./data/ using:
 ./scripts/plot.py
-
-Here, Slovenia is represented by mere 39 grid-points on  regular latitude-longitude grid with 0.25° resolution, which are located within the national boundaries (figure below). The treatment of the area near the boundaries could be performed more accurately, however, the results are not expected to differ much, except for some mild temperature shift. For example, another figure shows that the temperatures are very highly correlated even if we compare the current representation of Slovenia by representation with a boundary-enclosing box. 
