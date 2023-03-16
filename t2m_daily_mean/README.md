@@ -13,7 +13,8 @@ https://anaconda.org/anaconda/xarray
 4. Install Dask:
 https://anaconda.org/conda-forge/dask
 
-5. Set up a cron-job for 
+5. Set up a cron-job for:
+
 a) daily download of ERA5 reanalysis data up to day t-7, which updates NetCDF files in ./sources:
 ./scripts/download_daily_data.py
 
