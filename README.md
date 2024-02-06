@@ -1,4 +1,5 @@
 # Podnebnik Data Sources
+Note: this readme is copied to new location  /Podnebnik/website/data.  This repo will be archieved soon
 
 This is a collection of open data sources related to the climate change. We use the [Frictionless Data Framework](https://framework.frictionlessdata.io/) to organize and describe the data.
 
