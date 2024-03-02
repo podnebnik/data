@@ -1,3 +1,9 @@
+
+# Note
+this Repo is copied to new location  [/Podnebnik/website/data](https://github.com/podnebnik/website/tree/main/data) and has been archieved.
+
+
+
 # Podnebnik Data Sources
 Note: this readme is copied to new location  /Podnebnik/website/data.  This repo will be archieved soon
 
