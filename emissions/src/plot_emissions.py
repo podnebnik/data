@@ -78,20 +78,23 @@ legend.get_title().set_fontsize('18')
 
 # Create the second legend and add the artist manually.
 
+ind1 = 1
+ind2 = 11
+
 lines = []
-lines += ax.plot(data_projections_bau["year"].values[:11]+0.5,data_projections_bau["total_source"].values[:11],\
+lines += ax.plot(data_projections_bau["year"].values[ind1:ind2]+0.5,data_projections_bau["total_source"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\n'business as usual'",color="darkviolet")
-lines += ax.plot(data_projections_current["year"].values[:11]+0.5,data_projections_current["total_source"].values[:11],\
+lines += ax.plot(data_projections_current["year"].values[ind1:ind2]+0.5,data_projections_current["total_source"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\nobstojeci ukrepi",color="red")
-lines += ax.plot(data_projections_add["year"].values[:11]+0.5,data_projections_add["total_source"].values[:11],\
+lines += ax.plot(data_projections_add["year"].values[ind1:ind2]+0.5,data_projections_add["total_source"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\ndodatni ukrepi,\nnuklearka",color="darkorange")
-lines += ax.plot(data_projections_ambadd["year"].values[:11]+0.5,data_projections_ambadd["total_source"].values[:11],\
+lines += ax.plot(data_projections_ambadd["year"].values[ind1:ind2]+0.5,data_projections_ambadd["total_source"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\nambiciozni dodatni ukrepi,\nnuklearka",color="gold")
-lines += ax.plot(data_projections_ec["year"].values[:11]+0.5,data_projections_ec["ec"].values[:11],\
+lines += ax.plot(data_projections_ec["year"].values[ind1:ind2]+0.5,data_projections_ec["ec"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij skladen \ns cilji Evropske komisije",color="yellowgreen")
-lines += ax.plot(data_projections_ec["year"].values[:11]+0.5,data_projections_ec["paris20"].values[:11],\
+lines += ax.plot(data_projections_ec["year"].values[ind1:ind2]+0.5,data_projections_ec["paris20"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij \nPariski sporazum "+r"$\Delta T=$ 2$^\circ$C"+r"$(SLO: \Delta T=$3.2$^\circ$C)",color="lime")
-lines += ax.plot(data_projections_ec["year"].values[:11]+0.5,data_projections_ec["paris15"].values[:11],\
+lines += ax.plot(data_projections_ec["year"].values[ind1:ind2]+0.5,data_projections_ec["paris15"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij \nPariski sporazum "+r"$\Delta T=$1.5$^\circ$C "+r"$(SLO: \Delta T=$2.4$^\circ$C)",color="darkgreen")
 
 from matplotlib.legend import Legend
@@ -107,11 +110,11 @@ leg = Legend(ax, lines, \
 legend2 = ax.add_artist(leg)
 legend2.get_title().set_fontsize('18')
 
-ax.axvspan(0, 2021, alpha=0.1, color='gray')
+ax.axvspan(0, 2022, alpha=0.1, color='gray')
 
 #plt.legend(ncol=2,fontsize=18,bbox_to_anchor=(1.02, 1), loc='upper left')
 fig.tight_layout()
-fig.savefig("total_2022.png",dpi=300)
+fig.savefig("total_2023.png",dpi=300)
 
 
 ##%% read projections (Aljoša Slameršak)

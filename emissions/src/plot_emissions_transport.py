@@ -65,15 +65,17 @@ ax.plot(years,data[:8].sum(axis=0), lw=5, color="black",label="skupaj (brez medn
 legend=ax.legend(fontsize=18,ncol=2,bbox_to_anchor=(0.1, -0.1),loc='upper left',title="Zgodovinske vrednosti")
 legend.get_title().set_fontsize('18')
     
+ind1 = 1
+ind2 = 11
 
 lines = []
-lines += ax.plot(data_projections_bau["year"].values[:11],data_projections_bau["transport"].values[:11],\
+lines += ax.plot(data_projections_bau["year"].values[ind1:ind2],data_projections_bau["transport"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\nobstojeci ukrepi",color="darkviolet")
-lines += ax.plot(data_projections_current["year"].values[:11],data_projections_current["transport"].values[:11],\
+lines += ax.plot(data_projections_current["year"].values[ind1:ind2],data_projections_current["transport"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\nobstojeci ukrepi",color="red")
-lines += ax.plot(data_projections_add["year"].values[:11],data_projections_add["transport"].values[:11],\
+lines += ax.plot(data_projections_add["year"].values[ind1:ind2],data_projections_add["transport"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\ndodatni ukrepi",color="darkorange")
-lines += ax.plot(data_projections_ambadd["year"].values[:11],data_projections_ambadd["transport"].values[:11],\
+lines += ax.plot(data_projections_ambadd["year"].values[ind1:ind2],data_projections_ambadd["transport"].values[ind1:ind2],\
          lw=4,label="skupaj - scenarij NEPN\nambiciozni dodatni ukrepi",color="gold")
 from matplotlib.legend import Legend
 leg = Legend(ax, lines, \
@@ -86,8 +88,8 @@ legend2 = ax.add_artist(leg)
 legend2.get_title().set_fontsize('18')
 
 
-ax.axvspan(0, 2021, alpha=0.1, color='gray')
+ax.axvspan(0, 2022, alpha=0.1, color='gray')
 
 #ax.legend(ncol=2,fontsize=18,loc=4)
 plt.tight_layout()
-plt.savefig("promet_2022.png",dpi=300)
+plt.savefig("promet_2023.png",dpi=300)

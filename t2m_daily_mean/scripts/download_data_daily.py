@@ -36,7 +36,7 @@ for file_path in file_list:
 
 # download all data from (last_archived_day + 1 day) until (today - 7 days)    
 start_date = last_archived_day + np.timedelta64(1, 'D')
-end_date = np.datetime64('today') -  np.timedelta64(7, 'D') + np.timedelta64(1, 'D')
+end_date = np.datetime64('today') -  np.timedelta64(5, 'D') + np.timedelta64(1, 'D')
 
 if start_date < end_date:
     print("Download data from {0} to {1}".format(start_date.astype('datetime64[D]'),end_date.astype('datetime64[D]')))

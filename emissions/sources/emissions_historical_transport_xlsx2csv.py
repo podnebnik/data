@@ -70,7 +70,7 @@ while y <= year_end:
     # manually loop through sheets
     
     # file_name = glob.glob("SVN_2021__14032021_193543/SVN_{0:04d}_{1:04d}_*.xlsx".format(year_current,y))[0]
-    file_name = glob.glob("SVN_2022/SVN_{0:04d}_{1:04d}_*.xlsx".format(year_current,y))[0]
+    file_name = glob.glob("SVN_20230315/SVN_{0:04d}_{1:04d}_*.xlsx".format(year_current,y))[0]
     
     # Sectoral report for energy, sheet 1 + sheet2
     df = pd.read_excel(file_name,sheet_name="Table1.A(a)s3")

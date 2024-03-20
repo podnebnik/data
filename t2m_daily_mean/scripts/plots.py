@@ -43,17 +43,56 @@ t2m_daily = pd.read_csv("../data/t2m_table_doy.csv")
 cols = list(range(1,85))  # columns 1, 3, and 4 (0-indexed)
 data = t2m_daily.iloc[:, cols].values
 
-fig = plt.figure(2,figsize=(20,6))
+fig = plt.figure(2,figsize=(10,3.5))
 ax = fig.add_subplot(111)
-cnt=ax.contourf(range(1940,2024),t2m_daily["Day_of_year"].values,data-273.15,np.arange(-10,23,2.,),cmap=plt.get_cmap("nipy_spectral"),extend='both')
+cnt=ax.contourf(range(1940,2024),t2m_daily["Day_of_year"].values,data-273.15,np.arange(-10,23,2.,),\
+                cmap=plt.get_cmap("nipy_spectral"),extend='both',interpolation='none')
 ax.set_xlabel("Leto",fontsize=14)
 ax.set_ylabel(r"Dan v letu",fontsize=14)
 ax.grid()
 cbar = fig.colorbar(cnt,pad=0.01)
 cbar.ax.set_ylabel(r'Povprečna dnevna T na 2 m [$^\circ$C]')
 plt.tight_layout()
-fig.savefig("../plots/t2m_slovenia_daily_raw.png")
+fig.savefig("../plots/t2m_slovenia_daily_raw.png",dpi=300)
 
+#%% contour plot of daily 2m temperature in Slovenia
+import numpy.ma as ma
+# Load data from CSV
+t2m_daily = pd.read_csv("../data/t2m_table_doy.csv")
+cols = list(range(1, 85))  # columns 1 to 84 (0-indexed)
+data = t2m_daily.iloc[:, cols].values
+
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(20,6))
+
+# Define x (years) and y (day of year) values
+years = np.arange(1940, 2024)
+doys= t2m_daily["Day_of_year"].values
+
+# Define the levels for the color contour
+levels = np.arange(-10, 23, 2)
+
+data = data-273.15
+
+
+# Create a pcolormesh plot
+pcm = ax.pcolormesh(years, doys, data, cmap=plt.get_cmap("nipy_spectral"), vmin=-10, vmax=22)
+
+# Set labels and title
+ax.set_xlabel("Leto", fontsize=14)
+ax.set_ylabel("Dan v letu", fontsize=14)
+ax.grid()
+
+# Add a colorbar
+cbar = fig.colorbar(pcm, pad=0.01,extend='both')
+cbar.ax.set_ylabel(r'Povprečna dnevna T na 2 m [$^\circ$C]')
+
+# Save the figure
+plt.tight_layout()
+fig.savefig("../plots/t2m_slovenia_daily_raw_pcolormesh.png")
+
+# Show the plot (optional)
+plt.show()
 
 #%% contour plot of daily 2m temperature in Slovenia - 15-day moving average
 
@@ -125,7 +164,7 @@ def find_day(x,y,value):
     return x_value
 
 t2m_daily = pd.read_csv("../data/t2m_table_doy_ma_61day.csv")
-cols = list(range(1,83))  # columns 1, 3, and 4 (0-indexed)
+cols = list(range(1,84))  # columns 1, 3, and 4 (0-indexed)
 data = t2m_daily.iloc[:, cols].values
 
 data_half1 = data[:183,:]
@@ -134,32 +173,33 @@ doy1 = np.arange(1,184)
 doy2 = np.arange(184,366)
 
 # Value to interpolate
-value = 283 # K = 10°C
+value = 281 # K = 10°C
 
-day_value1 = np.zeros(82)
-day_value2 = np.zeros(82)
+day_value1 = np.zeros(83)
+day_value2 = np.zeros(83)
 
-for k in range(82):
+for k in range(83):
     day_value1[k] = find_day(doy1,data_half1[:,k],value)
     day_value2[k] = find_day(doy2,data_half2[:,k],value)
 
-times = np.arange(1941,2023)
+times = np.arange(1941,2024)
 c10_1 = np.polyfit(times, day_value1, 1)
 c10_2 = np.polyfit(times, day_value2, 1)
 
 
-fig = plt.figure(5,figsize=(20,6))
+fig = plt.figure(5,figsize=(10,3.5))
 ax = fig.add_subplot(111)
-cnt=ax.contourf(range(1941,2023),t2m_daily["Day_of_year"].values,data-273.15,np.arange(-10,23,2.,),cmap=plt.get_cmap("nipy_spectral"),extend='both')
+cnt=ax.contourf(range(1941,2024),t2m_daily["Day_of_year"].values,data-273.15,np.arange(-10,23,2.,),cmap=plt.get_cmap("nipy_spectral"),extend='both')
 ax.set_xlabel("Leto",fontsize=14)
 ax.set_ylabel(r"Dan v letu",fontsize=14)
 ax.grid()
+ax.set_xlim([1940,2023])
 ax.plot(times, times*c10_1[0]+c10_1[1],"k--")
 ax.plot(times, times*c10_2[0]+c10_2[1],"k--")
 cbar = fig.colorbar(cnt,pad=0.01)
 cbar.ax.set_ylabel(r'Povprečna dnevna T na 2 m [$^\circ$C]')
 plt.tight_layout()
-fig.savefig("../plots/t2m_slovenia_daily_61dayma.png")
+fig.savefig("../plots/t2m_slovenia_daily_61dayma.png",dpi=300)
 
 
 #%% contour plot of monthly-mean 2m temperature in Slovenia
@@ -179,6 +219,89 @@ cbar.ax.set_ylabel(r'Povprečna mesečna T na 2 m [$^\circ$C]')
 plt.tight_layout()
 fig.savefig("../plots/t2m_slovenia_monthly_means.png")
 
+#%%
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(10,3.2))
+
+# Define x (years) and y (day of year) values
+years = np.arange(1940, 2024)
+cols = list(range(1,13))  # columns 1, 3, and 4 (0-indexed)
+data = (t2m_monthly_means.iloc[:, cols].values[:-1,:]).T
+
+# Define the levels for the color contour
+levels = np.arange(-10, 23, 2)
+
+data = data-273.15
+
+
+# Create a pcolormesh plot
+pcm = ax.pcolormesh(years, cols, data, cmap=plt.get_cmap("nipy_spectral"), vmin=-10, vmax=22)
+
+# Set labels and title
+ax.set_xlabel("Leto", fontsize=12)
+ax.set_ylabel("Mesec", fontsize=12)
+ax.set_title("Povprečna mesečna T na 2 m")
+ax.grid()
+
+# Add a colorbar
+cbar = fig.colorbar(pcm, pad=0.01,extend='both')
+cbar.ax.set_ylabel(r'T [$^\circ$C]')
+
+# Save the figure
+plt.tight_layout()
+fig.savefig("../plots/t2m_slovenia_monthly_raw_pcolormesh.png")
+
+# Show the plot (optional)
+plt.show()
+
+#%%
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(14,3.2))
+
+# Define x (years) and y (day of year) values
+years = np.arange(1940, 2025)
+cols = list(range(1,13))  # columns 1, 3, and 4 (0-indexed)
+data = (t2m_monthly_means.iloc[:, cols].values[:-1,:])
+data = data - data[21:51,:].mean(axis=0)
+data = data.T
+
+# Create a pcolormesh plot
+pcm = ax.pcolormesh(years, np.arange(0,13), data, cmap=plt.get_cmap("seismic"), vmin=-5, vmax=5)
+
+
+# set ticks
+yticks = np.arange(data.shape[0]) + 0.5
+xticks = np.arange(1940,2024,10) + 0.5
+
+# Set x and y ticks
+plt.yticks(yticks, np.arange(1,13))
+plt.xticks(xticks, np.arange(1940,2024,10))
+
+# Set labels and title
+ax.set_xlabel("Leto", fontsize=12)
+ax.set_ylabel("Mesec", fontsize=12)
+ax.set_title("Odstopanje povprečne mesečne T na 2 m od povprečja 1961-1990 (Slovenija, ECMWF ERA5)")
+# ax.grid()
+
+# Add a colorbar
+cbar = fig.colorbar(pcm, pad=0.01,extend='both')
+cbar.ax.set_ylabel(r'$\Delta$T [$^\circ$C]')
+
+# Save the figure
+plt.tight_layout()
+fig.savefig("../plots/t2m_slovenia_monthly_anomaly_raw_pcolormesh.png")
+
+# Show the plot (optional)
+plt.show()
+
+
+
+#%%
+stevilo_let = t2m_monthly_means.shape[0]-2
+
+for m in range(1,13):
+    mesto = (np.where((np.argsort(t2m_monthly_means.values[:-1,:],axis=0)==stevilo_let)[:,m][::-1]==True))[0][0]+1
+    print("{0}. mesec je bil {1}. najtoplješi.".format(m,mesto))
 
 
 #%% contour plot of monthly-mean 2m temperature deviations from 1981-2010 climate mean
@@ -227,8 +350,8 @@ ind2 = ndays-365+day_of_year
 
 
 t2m_daily_filtered = pd.read_csv('../data/t2m_table_doy_ma_7day.csv')
-year1 = 1981
-year2 = 2010
+year1 = 1961
+year2 = 1990
 col1 = np.argwhere(t2m_daily_filtered.columns==str(year1))[0,0]
 col2 = np.argwhere(t2m_daily_filtered.columns==str(year2))[0,0]
 cols = list(range(col1,col2+1))  # columns 1, 3, and 4 (0-indexed)
@@ -237,21 +360,21 @@ t2m_mean_shifted = np.concatenate((t2m_mean[day_of_year:],t2m_mean[:day_of_year]
 
 fig = plt.figure(8,figsize=(14,6))
 ax = fig.add_subplot(111)
-ax.plot(t2m_daily["Date"][ind1:ind2],t2m_daily["t2m"][ind1:ind2],"k-",label="$T$")
+ax.plot(t2m_daily["Date"][ind1:ind2],t2m_daily["t2m"][ind1:ind2]-273.,"k-",label="$T$")
 # ax.plot(t2m_daily_7dayma["Date"][ndays-365:ndays],t2m_daily_7dayma["t2m"][ndays-365:ndays],"k-",label="$T_7$")
-ax.plot(t2m_daily["Date"][ind1:ind2],t2m_mean_shifted,"r-",label="$\overline{T}(1981-2010)$")
+ax.plot(t2m_daily["Date"][ind1:ind2],t2m_mean_shifted-273.,"r-",label="$\overline{T}$ (1961-1990)")
 
-ax.fill_between(t2m_daily["Date"][ind1:ind2], t2m_mean_shifted, t2m_daily["t2m"][ind1:ind2], t2m_mean_shifted>t2m_daily["t2m"][ind1:ind2],
+ax.fill_between(t2m_daily["Date"][ind1:ind2], t2m_mean_shifted-273., t2m_daily["t2m"][ind1:ind2]-273., t2m_mean_shifted-273.>t2m_daily["t2m"][ind1:ind2]-273.,
                   color='blue', alpha=.4)
-ax.fill_between(t2m_daily["Date"][ind1:ind2], t2m_mean_shifted, t2m_daily["t2m"][ind1:ind2], t2m_mean_shifted<t2m_daily["t2m"][ind1:ind2],
+ax.fill_between(t2m_daily["Date"][ind1:ind2], t2m_mean_shifted-273., t2m_daily["t2m"][ind1:ind2]-273., t2m_mean_shifted-273.<t2m_daily["t2m"][ind1:ind2]-273.,
                   color='red', alpha=.4)
 
 date_form = mdates.DateFormatter('%Y-%m-%d')
 ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_major_formatter(date_form)
 
-ax.set_ylabel(r"$T$",fontsize=14)
-ax.set_title("Odstopanje v zadnjih 365 dnevih od 7-dnevnega drsečega povprečja 1981-2010 (ECMWF ERA5)")
+ax.set_ylabel(r"$T$ [˚C]",fontsize=14)
+ax.set_title("Povprečna dnevna temperatura v zadnjih 365 dnevih in odstopanje od 7-dnevnega drsečega povprečja 1961-1990 (ECMWF ERA5)")
 
 ax.legend(fontsize=14)
 ax.grid()

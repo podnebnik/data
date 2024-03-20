@@ -14,9 +14,9 @@ import cdstoolbox as ct
 # In the example below, the daily mean 2m temperature is calculated for 2019.
 
 global year,month,day
-year = 2023
-month =  3
-day =  9
+year = 2024
+month =  2
+day = 14
 
 @ct.application(title='Download data')
 @ct.output.download()
